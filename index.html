@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Website</title>
+    <title>Abbilefa - ABIYASA JALU LANGIT</title>
     <style>
         * {
             margin: 0;
@@ -15,6 +15,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
+            overflow-x: hidden;
         }
 
         /* Header */
@@ -27,6 +28,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
         nav {
@@ -59,60 +61,82 @@
             opacity: 0.8;
         }
 
-        /* Hero Section */
+        /* Hero Section with Canva Embed */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin-top: 80px;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
             text-align: center;
-            color: white;
-            margin-top: 70px;
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out;
+        .canva-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 56.2500%;
+            padding-bottom: 0;
+            box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16);
+            margin-top: 1.6em;
+            margin-bottom: 0.9em;
+            overflow: hidden;
+            border-radius: 8px;
+            will-change: transform;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
+        .canva-container iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 1rem 2rem;
+        .canva-credit {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        .canva-credit a {
+            color: #667eea;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s;
-            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
-        .cta-button:hover {
-            background: #ff5252;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        .canva-credit a:hover {
+            text-decoration: underline;
         }
 
-        /* Sections */
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
         }
 
-        .section {
-            padding: 4rem 0;
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #333;
         }
 
         h2 {
@@ -122,36 +146,41 @@
             color: #333;
         }
 
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .subtitle {
+            font-size: 1.2rem;
             text-align: center;
-            transition: transform 0.3s;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact */
-        .contact {
-            background: #f8f9fa;
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
             text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.4);
         }
 
         /* Footer */
@@ -160,18 +189,7 @@
             color: white;
             text-align: center;
             padding: 2rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-size: 0.9rem;
         }
 
         /* Mobile Responsive */
@@ -180,9 +198,30 @@
                 display: none;
             }
             
-            .hero-content h1 {
-                font-size: 2.5rem;
+            h1 {
+                font-size: 2rem;
             }
+            
+            .hero {
+                margin-top: 70px;
+                padding: 1rem;
+            }
+            
+            .canva-container {
+                padding-top: 75%; /* Better mobile aspect ratio */
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -190,7 +229,7 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">YourBrand</div>
+            <div class="logo">Abbilefa</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
@@ -199,55 +238,52 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Hero Section with Canva Embed -->
+    <section id="home" class="hero fade-in">
         <div class="hero-content">
-            <h1>Welcome to My Awesome Site</h1>
-            <p>Creating beautiful experiences with modern design</p>
-            <a href="#features" class="cta-button">Get Started</a>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="section">
-        <div class="container">
-            <h2>Why Choose Us?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Fast & Reliable</h3>
-                    <p>Lightning-fast performance with rock-solid reliability.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Beautiful Design</h3>
-                    <p>Stunning visuals that captivate your audience.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Mobile First</h3>
-                    <p>Perfectly responsive across all devices.</p>
-                </div>
+            <h1>Abbilefa</h1>
+            <div class="canva-container">
+                <iframe 
+                    loading="lazy"
+                    src="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?embed" 
+                    allowfullscreen="allowfullscreen" 
+                    allow="fullscreen">
+                </iframe>
+            </div>
+            <div class="canva-credit">
+                <a href="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?utm_content=DAHFO32kgJ0&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">
+                    Abbilefa
+                </a> by <strong>ABIYASA JALU LANGIT</strong>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
+    <!-- Features Section -->
+    <section id="features" class="features fade-in">
         <div class="container">
-            <h2>Ready to Get Started?</h2>
-            <p>Let's create something amazing together!</p>
-            <a href="mailto:hello@yourwebsite.com" class="cta-button">Contact Us</a>
+            <h2>Discover More</h2>
+            <p class="subtitle">Explore the amazing world of Abbilefa and what makes it special</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section fade-in">
+        <div class="container">
+            <h2>Ready to Explore?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Join the Abbilefa community today!</p>
+            <a href="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view" target="_blank" class="cta-button">
+                View Full Design
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 YourBrand. All rights reserved.</p>
+        <p>&copy; 2024 Abbilefa by ABIYASA JALU LANGIT. Made with ❤️ and Canva.</p>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -261,17 +297,41 @@
             });
         });
 
-        // Add scroll effect to header
+        // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
                 header.style.background = 'rgba(102, 126, 234, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
             } else {
                 header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                header.style.backdropFilter = 'none';
             }
         });
+
+        // Fade in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Make Canva iframe responsive on mobile
+        function adjustCanvaHeight() {
+            const canvaContainer = document.querySelector('.canva-container');
+            if (window.innerWidth < 768) {
+                canvaContainer.style.paddingTop = '75%';
+            } else {
+                canvaContainer.style.paddingTop = '56.2500%';
+            }
+        }
+
+        window.addEventListener('resize', adjustCanvaHeight);
+        adjustCanvaHeight();
     </script>
 </body>
 </html>
