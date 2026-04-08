@@ -11,24 +11,43 @@
             box-sizing: border-box;
         }
 
+        :root {
+            /* Palette Warna ELEGANT */
+            --primary-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
+            --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-white: rgba(255, 255, 255, 0.95);
+            --text-primary: #ffffff;
+            --text-secondary: #e8e8ff;
+            --text-dark: #1a1a2e;
+            --border-light: rgba(255, 255, 255, 0.2);
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-dark: rgba(0, 0, 0, 0.3);
+            --whatsapp-green: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-primary);
+            background: var(--primary-gradient);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Navigation */
+        /* Navigation - Glassmorphism Elegant */
         nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px var(--shadow-light);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .nav-container {
@@ -42,27 +61,33 @@
 
         .logo {
             font-size: 1.8rem;
-            font-weight: bold;
-            color: #764ba2;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-secondary);
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 1rem;
             position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-links a:hover {
-            color: #764ba2;
+            color: var(--text-primary);
             transform: translateY(-2px);
         }
 
@@ -71,10 +96,11 @@
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #764ba2;
-            transition: width 0.3s ease;
+            bottom: 0;
+            left: 50%;
+            background: var(--accent-gradient);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
         }
 
         .nav-links a:hover::after {
@@ -86,71 +112,131 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
-            padding-top: 100px;
+            padding-top: 110px;
         }
 
         /* Sections */
         section {
-            padding: 4rem 0;
-            min-height: 60vh;
+            padding: 5rem 0;
+            min-height: 70vh;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
             text-align: center;
-            margin-bottom: 2rem;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.3),
+                0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
 
-        /* Home */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        /* Home - Hero Section */
         #home {
             text-align: center;
-            color: white;
+            padding-top: 8rem;
         }
 
         .hero-content {
-            font-size: 1.2rem;
-            max-width: 800px;
+            font-size: 1.3rem;
+            max-width: 900px;
             margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* About */
-        #about {
-            background: rgba(255, 255, 255, 0.1);
+            line-height: 1.9;
+            color: var(--text-secondary);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 2rem 0;
         }
 
-        /* Projects */
+        /* About - Glass Card */
+        #about {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 1px solid var(--border-light);
+            padding: 4rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px var(--shadow-dark);
+        }
+
+        #about p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        /* Projects - Elegant Grid */
         #projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 2.5rem;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            background: var(--glass-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 40px var(--shadow-light),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--secondary-gradient);
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                0 30px 80px var(--shadow-dark),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
         }
 
-        /* Canva Embed */
+        .project-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .project-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Canva Container */
         .canva-container {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: var(--glass-white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 25px 60px var(--shadow-light);
             margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .canva-embed {
@@ -159,12 +245,10 @@
             height: 0;
             padding-top: 56.2500%;
             padding-bottom: 0;
-            box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16);
-            margin-top: 1.6em;
-            margin-bottom: 0.9em;
+            box-shadow: 0 8px 32px var(--shadow-light);
+            margin: 2rem 0;
             overflow: hidden;
-            border-radius: 8px;
-            will-change: transform;
+            border-radius: 15px;
         }
 
         .canva-embed iframe {
@@ -176,61 +260,184 @@
             border: none;
             padding: 0;
             margin: 0;
+            border-radius: 15px;
         }
 
         .canva-link {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             margin-top: 1rem;
-            color: #764ba2;
-            font-weight: bold;
+            color: var(--text-primary);
+            font-weight: 600;
             text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            background: rgba(255,255,255,0.2);
-            border-radius: 25px;
-            transition: all 0.3s ease;
+            padding: 1rem 2rem;
+            background: var(--secondary-gradient);
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.4);
         }
 
         .canva-link:hover {
-            background: rgba(118, 75, 162, 0.3);
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(118, 75, 162, 0.6);
         }
 
-        /* Contact */
+        /* Contact - WhatsApp Cards */
         #contact {
             text-align: center;
         }
 
         .contact-info {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: 20px;
-            max-width: 600px;
+            background: var(--glass-white);
+            padding: 4rem;
+            border-radius: 25px;
+            max-width: 800px;
             margin: 0 auto;
+            box-shadow: 0 30px 80px var(--shadow-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        .contact-info h3 {
+            color: var(--text-dark);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-info p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        /* WhatsApp Card - ELEGANT VERSION */
+        .whatsapp-card {
+            background: var(--whatsapp-green);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: slideUp 0.7s ease forwards;
+            animation-delay: var(--delay);
+            opacity: 0;
+            transform: translateY(30px);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .whatsapp-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 25px 60px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .whatsapp-text strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .whatsapp-text small {
+            opacity: 0.95;
+            font-size: 1rem;
+        }
+
+        .whatsapp-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .whatsapp-link:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.08);
+            color: white;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Social Links */
+        .contact-info a {
+            color: #764ba2;
+            font-weight: 600;
+            margin: 0 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--text-primary);
+            text-shadow: 0 0 10px rgba(118, 75, 162, 0.8);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
-                gap: 1rem;
+                gap: 1.5rem;
             }
-            
             .nav-container {
-                padding: 0 1rem;
+                padding: 0 1.5rem;
             }
-            
             .section-title {
                 font-size: 2rem;
             }
-            
             #projects {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .whatsapp-card {
+                padding: 1.5rem;
             }
         }
 
-        /* Active section */
-        section.active {
-            opacity: 1;
-            transform: translateY(0);
+        /* Scrollbar Custom */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-gradient);
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -261,7 +468,7 @@
         <!-- About Section -->
         <section id="about">
             <h2 class="section-title">About Us</h2>
-            <div style="text-align: center; color: white; font-size: 1.2rem;">
+            <div style="text-align: center; font-size: 1.25rem;">
                 <p>Kami adalah tim kreatif yang berdedikasi untuk menciptakan desain dan proyek inovatif. Dengan pengalaman bertahun-tahun di bidang desain grafis dan pengembangan digital, kami siap mewujudkan ide-ide Anda menjadi kenyataan.</p>
             </div>
         </section>
@@ -301,105 +508,17 @@
             <div class="contact-info">
                 <h3>Abbilefa Team</h3>
                 <p><strong>📧 Email:</strong> abbilefaproject@gmail.com</p>
-               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
-    <div class="whatsapp-card" style="--delay: 0s;">
-        <div class="whatsapp-icon">🎨</div>
-        <div class="whatsapp-text">
-            <strong>Graphic Designer</strong><br>
-            <small>+62 813-8567-5718</small>
-        </div>
-        <a href="https://wa.me/6281385675718" target="_blank" class="whatsapp-link">
-            💬 Chat
-        </a>
-    </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+                    <div class="whatsapp-card" style="--delay: 0s;">
+                        <div class="whatsapp-icon">🎨</div>
+                        <div class="whatsapp-text">
+                            <strong>Graphic Designer</strong><br>
+                            <small>+62 813-8567-5718</small>
+                        </div>
+                        <a href="https://wa.me/6281385675718" target="_blank" class="whatsapp-link">
+                            💬 Chat
+                        </a>
+                    </div>
 
-    <div class="whatsapp-card" style="--delay: 0.1s;">
-        <div class="whatsapp-icon">✍️</div>
-        <div class="whatsapp-text">
-            <strong>Content Writer</strong><br>
-            <small>+62 831-3534-1201</small>
-        </div>
-        <a href="https://wa.me/6283135341201" target="_blank" class="whatsapp-link">
-            💬 Chat
-        </a>
-    </div>
-
-    <div class="whatsapp-card" style="--delay: 0.2s;">
-        <div class="whatsapp-icon">🌐</div>
-        <div class="whatsapp-text">
-            <strong>Web Developer</strong><br>
-            <small>+62 895-1956-5824</small>
-        </div>
-        <a href="https://wa.me/6289519565824" target="_blank" class="whatsapp-link">
-            💬 Chat
-        </a>
-    </div>
-
-    <div class="whatsapp-card" style="--delay: 0.3s;">
-        <div class="whatsapp-icon">💻</div>
-        <div class="whatsapp-text">
-            <strong>Programmer</strong><br>
-            <small>+62 821-8003-1185</small>
-        </div>
-        <a href="https://wa.me/6282180031185" target="_blank" class="whatsapp-link">
-            💬 Chat
-        </a>
-    </div>
-</div>
-                <p><strong>🌐 Social Media:</strong></p>
-                <p>
-                    <a href="#" style="color: #764ba2; margin: 0 1rem; font-weight: bold;">Instagram</a> |
-                    <a href="#" style="color: #764ba2; margin: 0 1rem; font-weight: bold;">LinkedIn</a>
-                </p>
-            </div>
-        </section>
-    </div>
-
-    <script>
-        // Smooth scrolling untuk navigasi
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-
-        // Active section highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                    <div class="whatsapp-card" style="--delay: 0.1
