@@ -161,7 +161,7 @@
             backdrop-filter: blur(10px);
         }
 
-        /* About - Glass Card */
+        /* About - Glass Card dengan Canva */
         #about {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
@@ -173,10 +173,11 @@
             box-shadow: 0 20px 60px var(--shadow-dark);
         }
 
-        #about p {
+        #about .about-text {
             font-size: 1.25rem;
             color: var(--text-secondary);
             text-align: center;
+            margin-bottom: 3rem;
         }
 
         /* Projects - Elegant Grid */
@@ -424,6 +425,9 @@
             .whatsapp-card {
                 padding: 1.5rem;
             }
+            #about {
+                padding: 2rem;
+            }
         }
 
         /* Scrollbar Custom */
@@ -465,19 +469,15 @@
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- About Section - DENGAN CANVA EMBED -->
         <section id="about">
             <h2 class="section-title">About Us</h2>
-            <div style="text-align: center; font-size: 1.25rem;">
+            <div class="about-text">
                 <p>Kami adalah tim kreatif yang berdedikasi untuk menciptakan desain dan proyek inovatif. Dengan pengalaman bertahun-tahun di bidang desain grafis dan pengembangan digital, kami siap mewujudkan ide-ide Anda menjadi kenyataan.</p>
             </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2 class="section-title">Projects</h2>
-            <div class="project-card">
-                <h3>🎨 Desain Utama Abbilefa</h3>
+            
+            <div class="project-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2);">
+                <h3 style="color: var(--text-primary);">🎨 Desain Utama Abbilefa</h3>
                 <div class="canva-container">
                     <div class="canva-embed">
                         <iframe 
@@ -492,6 +492,11 @@
                     </a>
                 </div>
             </div>
+        </section>
+
+        <!-- Projects Section - Tanpa Canva -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
             <div class="project-card">
                 <h3>📱 Proyek Mobile</h3>
                 <p>Website responsif yang dioptimalkan untuk semua perangkat. Desain modern dengan animasi halus dan performa tinggi.</p>
@@ -509,42 +514,9 @@
                 <h3>Abbilefa Team</h3>
                 <p><strong>📧 Email:</strong> abbilefaproject@gmail.com</p>
                 
-               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
-    <!-- 4 CARD WHATSAPP -->
-    <div class="whatsapp-card" style="--delay: 0s;">
-        <div class="whatsapp-icon">🎨</div>
-        <div class="whatsapp-text">
-            <strong>Graphic Designer</strong><br>
-            <small>+62 813-8567-5718</small>
-        </div>
-        <a href="https://wa.me/6281385675718" target="_blank" class="whatsapp-link">💬 Chat</a>
-    </div>
-
-    <div class="whatsapp-card" style="--delay: 0.1s;">
-        <div class="whatsapp-icon">✍️</div>
-        <div class="whatsapp-text">
-            <strong>Content Writer</strong><br>
-            <small>+62 831-3534-1201</small>
-        </div>
-        <a href="https://wa.me/6283135341201" target="_blank" class="whatsapp-link">💬 Chat</a>
-    </div>
-
-    <div class="whatsapp-card" style="--delay: 0.2s;">
-        <div class="whatsapp-icon">🌐</div>
-        <div class="whatsapp-text">
-            <strong>Web Developer</strong><br>
-            <small>+62 895-1956-5824</small>
-        </div>
-        <a href="https://wa.me/6289519565824" target="_blank" class="whatsapp-link">💬 Chat</a>
-    </div>
-
-    <div class="whatsapp-card" style="--delay: 0.3s;">
-        <div class="whatsapp-icon">💻</div>
-        <div class="whatsapp-text">
-            <strong>Programmer</strong><br>
-            <small>+62 821-8003-1185</small>
-        </div>
-        <a href="https://wa.me/6282180031185" target="_blank" class="whatsapp-link">💬 Chat</a>
-    </div>
-</div>
-                    <div class="whatsapp-card" style="--delay: 0.1
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+                    <!-- 4 CARD WHATSAPP -->
+                    <div class="whatsapp-card" style="--delay: 0s;">
+                        <div class="whatsapp-icon">🎨</div>
+                        <div class="whatsapp-text">
+                            <
