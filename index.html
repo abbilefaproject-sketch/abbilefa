@@ -12,10 +12,9 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            overflow-x: hidden;
         }
 
         /* Header */
@@ -27,8 +26,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
 
         nav {
@@ -41,90 +39,37 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
+            cursor: pointer;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        /* Hero Section with Canva Embed */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            margin-top: 80px;
-            padding: 2rem;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .canva-container {
+            font-weight: 500;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            transition: all 0.3s;
             position: relative;
-            width: 100%;
-            height: 0;
-            padding-top: 56.2500%;
-            padding-bottom: 0;
-            box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16);
-            margin-top: 1.6em;
-            margin-bottom: 0.9em;
-            overflow: hidden;
-            border-radius: 8px;
-            will-change: transform;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .canva-container iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border: none;
-            padding: 0;
-            margin: 0;
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
         }
 
-        .canva-credit {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 1rem;
-        }
-
-        .canva-credit a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        .canva-credit a:hover {
-            text-decoration: underline;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 5rem 2rem;
-            background: white;
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            min-height: 100vh;
+            scroll-margin-top: 90px;
         }
 
         .container {
@@ -133,89 +78,239 @@
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 3.8rem;
             text-align: center;
-            margin-bottom: 1rem;
-            color: #333;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
         }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             color: #333;
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             text-align: center;
             color: #666;
-            margin-bottom: 4rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 700px;
+            margin: 0 auto 4rem;
         }
 
-        /* CTA Section */
-        .cta-section {
+        /* Home Section */
+        #home {
+            background: linear-gradient(135deg, #f0f2ff 0%, #e0e7ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 90px;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+        }
+
+        .canva-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 56.25%;
+            box-shadow: 0 10px 40px rgba(63,69,81,0.2);
+            margin: 3rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 1000px;
+        }
+
+        .canva-container iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        .canva-credit {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 2rem;
+            font-weight: 600;
+        }
+
+        /* About Us Section */
+        #about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+            box-shadow: 0 20px 40px rgba(102,126,234,0.2);
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: #f8f9fa;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .project-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            height: 100%;
+            border-top: 4px solid #667eea;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .project-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .project-date {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Person Section */
+        #contact {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 4rem 2rem;
-            text-align: center;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
             transition: all 0.3s;
-            margin-top: 1rem;
         }
 
-        .cta-button:hover {
-            background: #ff5252;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255,107,107,0.4);
+        .contact-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.2);
         }
 
-        /* Footer */
-        footer {
-            background: #333;
+        .contact-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .contact-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-role {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links a {
+            display: block;
             color: white;
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            padding: 0.8rem;
+            border-radius: 10px;
+            transition: all 0.3s;
         }
 
-        /* Mobile Responsive */
+        .contact-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+        }
+
+        /* Mobile */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .hero {
-                margin-top: 70px;
-                padding: 1rem;
-            }
-            
-            .canva-container {
-                padding-top: 75%; /* Better mobile aspect ratio */
-            }
+            .nav-links { gap: 1rem; }
+            h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .canva-container { padding-top: 75%; }
         }
 
-        /* Scroll animations */
+        /* Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: all 0.8s ease-out;
         }
 
@@ -229,71 +324,168 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">Abbilefa</div>
+            <div class="logo" onclick="scrollToSection('home')">🌟 Abbilefa</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" onclick="setActiveLink(event,'home')">🏠 Home</a></li>
+                <li><a href="#about" onclick="setActiveLink(event,'about')">👥 About Us</a></li>
+                <li><a href="#projects" onclick="setActiveLink(event,'projects')">📁 Projects</a></li>
+                <li><a href="#contact" onclick="setActiveLink(event,'contact')">📞 Contact Person</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section with Canva Embed -->
-    <section id="home" class="hero fade-in">
+    <!-- Home Section -->
+    <section id="home" class="fade-in">
         <div class="hero-content">
-            <h1>Abbilefa</h1>
+            <h1>Welcome to Abbilefa</h1>
+            <p class="subtitle">Discover our amazing world of creativity and innovation</p>
             <div class="canva-container">
                 <iframe 
-                    loading="lazy"
                     src="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?embed" 
                     allowfullscreen="allowfullscreen" 
                     allow="fullscreen">
                 </iframe>
             </div>
             <div class="canva-credit">
-                <a href="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?utm_content=DAHFO32kgJ0&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">
-                    Abbilefa
+                <a href="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view?utm_content=DAHFO32kgJ0&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank">
+                    Abbilefa Design
                 </a> by <strong>ABIYASA JALU LANGIT</strong>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features fade-in">
+    <!-- About Us Section -->
+    <section id="about" class="fade-in">
         <div class="container">
-            <h2>Discover More</h2>
-            <p class="subtitle">Explore the amazing world of Abbilefa and what makes it special</p>
+            <h1>About Us</h1>
+            <h2>Our Story & Mission</h2>
+            <p class="subtitle">We are passionate creators bringing innovative solutions to life</p>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>🎯 Our Vision</h3>
+                    <p style="font-size:1.1rem; margin-bottom:2rem;">Transforming ideas into reality with creativity, quality, and dedication. Founded by visionary minds, Abbilefa is committed to excellence.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature">
+                            <div style="font-size:2rem; margin-bottom:0.5rem;">🚀</div>
+                            <strong>Innovation</strong><br>
+                            Cutting-edge solutions
+                        </div>
+                        <div class="feature">
+                            <div style="font-size:2rem; margin-bottom:0.5rem;">⭐</div>
+                            <strong>Quality</strong><br>
+                            Premium standards
+                        </div>
+                        <div class="feature">
+                            <div style="font-size:2rem; margin-bottom:0.5rem;">🤝</div>
+                            <strong>Trust</strong><br>
+                            Reliable partnership
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">👥</div>
+            </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section id="contact" class="cta-section fade-in">
+    <!-- Projects Section -->
+    <section id="projects" class="fade-in">
         <div class="container">
-            <h2>Ready to Explore?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Join the Abbilefa community today!</p>
-            <a href="https://www.canva.com/design/DAHFO32kgJ0/qMBon62EGPyNJruk1M4MDw/view" target="_blank" class="cta-button">
-                View Full Design
-            </a>
+            <h1>Our Projects</h1>
+            <h2>Featured Works</h2>
+            <p class="subtitle">Explore our portfolio of successful projects and case studies</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🌐</div>
+                    <h3>Corporate Website</h3>
+                    <div class="project-date">Completed: Jan 2024</div>
+                    <p>Modern responsive website for leading tech company with e-commerce integration.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">📱</div>
+                    <h3>Mobile App Design</h3>
+                    <div class="project-date">Completed: Mar 2024</div>
+                    <p>UI/UX design for fitness tracking app with 50k+ downloads.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🎨</div>
+                    <h3>Branding Package</h3>
+                    <div class="project-date">Completed: May 2024</div>
+                    <p>Complete brand identity for startup including logo, guidelines, and marketing materials.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Abbilefa by ABIYASA JALU LANGIT. Made with ❤️ and Canva.</p>
-    </footer>
+    <!-- Contact Person Section -->
+    <section id="contact" class="fade-in">
+        <div class="container">
+            <h1>Contact Person</h1>
+            <h2>Meet Our Team</h2>
+            <p class="subtitle" style="color: rgba(255,255,255,0.9);">Get in touch with our dedicated team members</p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-avatar">👨‍💼</div>
+                    <div class="contact-name">ABIYASA JALU LANGIT</div>
+                    <div class="contact-role">Founder & CEO</div>
+                    <div class="contact-links">
+                        <a href="tel:+1234567890">📞 +1 (234) 567-890</a>
+                        <a href="mailto:abiyasa@abbilefa.com">📧 abiyasa@abbilefa.com</a>
+                        <a href="https://wa.me/1234567890">💬 WhatsApp</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-avatar">👩‍💼</div>
+                    <div class="contact-name">SARI NURMA</div>
+                    <div class="contact-role">Project Manager</div>
+                    <div class="contact-links">
+                        <a href="tel:+1234567891">📞 +1 (234) 567-891</a>
+                        <a href="mailto:sari@abbilefa.com">📧 sari@abbilefa.com</a>
+                        <a href="#">💬 WhatsApp</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-avatar">🧑‍💻</div>
+                    <div class="contact-name">ANDI TECH</div>
+                    <div class="contact-role">Lead Developer</div>
+                    <div class="contact-links">
+                        <a href="tel:+1234567892">📞 +1 (234) 567-892</a>
+                        <a href="mailto:andi@abbilefa.com">📧 andi@abbilefa.com</a>
+                        <a href="#">💬 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
+        // Navigation
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+            setActiveLink(null, sectionId);
+        }
+
+        function setActiveLink(event, sectionId) {
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            if (event) {
+                event.target.classList.add('active');
+            } else {
+                const targetLink = document.querySelector(`a[href="#${sectionId}"]`);
+                if (targetLink) targetLink.classList.add('active');
+            }
+        }
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                const sectionId = this.getAttribute('href').substring(1);
+                scrollToSection(sectionId);
             });
         });
 
@@ -307,31 +499,27 @@
             }
         });
 
-        // Fade in animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // Auto-active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const headerHeight = 90;
+            let current = 'home';
+
+            sections.forEach(section => {
+                if (window.scrollY >= (section.offsetTop - headerHeight)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
                 }
             });
         });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Make Canva iframe responsive on mobile
-        function adjustCanvaHeight() {
-            const canvaContainer = document.querySelector('.canva-container');
-            if (window.innerWidth < 768) {
-                canvaContainer.style.paddingTop = '75%';
-            } else {
-                canvaContainer.style.paddingTop = '56.2500%';
-            }
-        }
-
-        window.addEventListener('resize', adjustCanvaHeight);
-        adjustCanvaHeight();
-    </script>
-</body>
-</html>
+        // Fade animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersect
