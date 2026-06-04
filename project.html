@@ -1,1 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbilefa Project - Project Sekolah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">Abbilefa Project</a>
+        
+        <button class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="navbar-nav" id="navbar-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="project.html" class="nav-link active">Project</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">Sistem Manajemen Project & Tugas</h1>
+            <p class="page-subtitle">Pantau alur pengerjaan tugas sekolah dan proyek belajar Anda di sini.</p>
+        </header>
+
+        <div class="ui-card">
+            
+            <div class="task-stats">
+                <div class="ui-card stat-card">
+                    <div class="stat-label">Total Tugas</div>
+                    <div class="stat-value" id="stat-total">0</div>
+                </div>
+                <div class="ui-card stat-card">
+                    <div class="stat-label">Selesai</div>
+                    <div class="stat-value" id="stat-completed">0</div>
+                </div>
+                <div class="ui-card stat-card">
+                    <div class="stat-label">Mendekati Deadline</div>
+                    <div class="stat-value" id="stat-approaching">0</div>
+                </div>
+                <div class="ui-card stat-card">
+                    <div class="stat-label">Lewat Deadline</div>
+                    <div class="stat-value" id="stat-overdue">0</div>
+                </div>
+            </div>
+
+            <div class="ui-divider"></div>
+
+            <div class="task-input-section">
+                <input type="text" id="task-title" class="task-input" placeholder="Judul tugas / project...">
+                <input type="date" id="task-deadline" class="task-input" style="color-scheme: dark;">
+                
+                <select id="task-category" class="task-input category-select">
+                    <option value="Matematika" selected>Matematika</option>
+                    <option value="Fisika">Fisika</option>
+                    <option value="Kimia">Kimia</option>
+                    <option value="Biologi">Biologi</option>
+                    <option value="Sejarah">Sejarah</option>
+                    <option value="Ekonomi">Ekonomi</option>
+                    <option value="Geografi">Geografi</option>
+                    <option value="Sosiologi">Sosiologi</option>
+                    <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                    <option value="Bahasa Inggris">Bahasa Inggris</option>
+                    <option value="Seni Rupa">Seni Rupa</option>
+                    <option value="Informatika">Informatika</option>
+                    <option value="PPkn">PPkn</option>
+                    <option value="Agama">Agama</option>
+                    <option value="Olahraga">Olahraga</option>
+                </select>
+            </div>
+
+            <div class="difficulty-section">
+                Tingkat kesulitan:
+                <span class="difficulty-stars">
+                    <span class="star" data-value="1">&#9734;</span>
+                    <span class="star" data-value="2">&#9734;</span>
+                    <span class="star" data-value="3">&#9734;</span>
+                    <span class="star" data-value="4">&#9734;</span>
+                    <span class="star" data-value="5">&#9734;</span>
+                </span>
+                <span id="rating-text" style="font-size: 0.9rem; margin-left: 10px; color: var(--text-muted);">Pilih bintang</span>
+            </div>
+
+            <button id="add-task-btn" class="btn" style="width: 100%; text-align: center; color: var(--text-color);">+ Tambah Tugas</button>
+            <div style="height: 1.5rem;"></div>
+
+            <div class="task-filters">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="active">Belum selesai</button>
+                <button class="filter-btn" data-filter="completed">Selesai</button>
+                <button class="filter-btn" data-filter="overdue">Terlambat</button>
+                <button class="filter-btn" data-filter="priority">Prioritas (***+)</button>
+            </div>
+
+            <div id="task-list-empty" class="task-list-empty">
+                <div class="empty-icon">&#128198;</div>
+                <div>Tidak ada alur tugas saat ini</div>
+            </div>
+
+            <div id="task-container" class="task-container"></div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 Abbilefa Project. Otw dipatenkan.
+    </footer>
+
+    <script>
+/* ==============================================
+   1. LOGIKA HAMBURGER MENU (Navigasi)
+   ============================================== */
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const navbarMenu = document.getElementById('navbar-menu');
+
+hamburgerBtn.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+    hamburgerBtn.classList.toggle('active'); // <-- INI YANG MEMBUAT ANIMASI X JALAN!
+});
+
+// Menutup menu jika klik di sembarang tempat (luar menu)
+document.addEventListener('click', (event) => {
+    if (!hamburgerBtn.contains(event.target) && !navbarMenu.contains(event.target)) {
+        navbarMenu.classList.remove('active');
+        hamburgerBtn.classList.remove('active'); // <-- Biar tombol balik jadi garis 3 lagi
+    }
+});
+        /* ==============================================
+           2. LOGIKA APLIKASI TUGAS
+           ============================================== */
+        let tasks = JSON.parse(localStorage.getItem('abbilefa_tasks')) || [];
+        let selectedRating = 0;
+        let currentFilter = 'all';
+
+        const stars = document.querySelectorAll('.star');
+        const ratingText = document.getElementById('rating-text');
+        const taskTitleInput = document.getElementById('task-title');
+        const taskDeadlineInput = document.getElementById('task-deadline');
+        const taskCategorySelect = document.getElementById('task-category');
+        const addTaskBtn = document.getElementById('add-task-btn');
+        const taskContainer = document.getElementById('task-container');
+        const taskListEmpty = document.getElementById('task-list-empty');
+        
+        const statTotal = document.getElementById('stat-total');
+        const statCompleted = document.getElementById('stat-completed');
+        const statApproaching = document.getElementById('stat-approaching');
+        const statOverdue = document.getElementById('stat-overdue');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', () => {
+                highlightStars(star.getAttribute('data-value'));
+            });
+            star.addEventListener('mouseleave', () => {
+                highlightStars(selectedRating);
+            });
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.getAttribute('data-value'));
+                ratingText.textContent = `Tingkat kesulitan: ${selectedRating} Bintang`;
+                ratingText.style.color = '#ffb300';
+                highlightStars(selectedRating);
+            });
+        });
+
+        function highlightStars(rating) {
+            stars.forEach(star => {
+                if (star.getAttribute('data-value') <= rating) {
+                    star.innerHTML = '&#9733;';
+                    star.style.color = '#ffb300';
+                } else {
+                    star.innerHTML = '&#9734;';
+                    star.style.color = '#444';
+                }
+            });
+        }
+
+        addTaskBtn.addEventListener('click', () => {
+            const title = taskTitleInput.value.trim();
+            const deadline = taskDeadlineInput.value;
+            const category = taskCategorySelect.value;
+
+            if (!title) {
+                alert('Silakan masukkan judul tugas terlebih dahulu!');
+                return;
+            }
+
+            const newTask = {
+                id: Date.now().toString(),
+                title: title,
+                deadline: deadline,
+                category: category,
+                rating: selectedRating,
+                completed: false
+            };
+
+            tasks.push(newTask);
+            saveAndRender();
+
+            taskTitleInput.value = '';
+            taskDeadlineInput.value = '';
+            selectedRating = 0;
+            ratingText.textContent = 'Pilih bintang';
+            ratingText.style.color = 'var(--text-muted)';
+            highlightStars(0);
+        });
+
+        function saveAndRender() {
+            localStorage.setItem('abbilefa_tasks', JSON.stringify(tasks));
+            updateStatistics();
+            renderTasks();
+        }
+
+        function updateStatistics() {
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            let completedCount = 0;
+            let approachingCount = 0;
+            let overdueCount = 0;
+
+            tasks.forEach(task => {
+                if (task.completed) {
+                    completedCount++;
+                } else if (task.deadline) {
+                    const dlDate = new Date(task.deadline);
+                    dlDate.setHours(0,0,0,0);
+                    const diffTime = dlDate - today;
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    
+                    if (diffDays < 0) {
+                        overdueCount++;
+                    } else if (diffDays >= 0 && diffDays <= 3) {
+                        approachingCount++;
+                    }
+                }
+            });
+
+            statTotal.textContent = tasks.length;
+            statCompleted.textContent = completedCount;
+            statApproaching.textContent = approachingCount;
+            statOverdue.textContent = overdueCount;
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        function formatDate(dateStr) {
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(dateStr).toLocaleDateString('id-ID', options);
+        }
+
+        function renderTasks() {
+            taskContainer.innerHTML = '';
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            const filteredTasks = tasks.filter(task => {
+                if (currentFilter === 'active') return !task.completed;
+                if (currentFilter === 'completed') return task.completed;
+                if (currentFilter === 'priority') return task.rating >= 3;
+                if (currentFilter === 'overdue') {
+                    if (task.completed || !task.deadline) return false;
+                    const dlDate = new Date(task.deadline);
+                    dlDate.setHours(0,0,0,0);
+                    return dlDate < today;
+                }
+                return true; 
+            });
+
+            if (filteredTasks.length === 0) {
+                taskListEmpty.style.display = 'block';
+            } else {
+                taskListEmpty.style.display = 'none';
+
+                filteredTasks.forEach(task => {
+                    const item = document.createElement('div');
+                    item.className = `task-item ${task.completed ? 'completed' : ''}`;
+                    item.dataset.id = task.id;
+
+                    let starsHtml = '';
+                    for (let i = 1; i <= 5; i++) {
+                        starsHtml += i <= task.rating ? '★' : '☆';
+                    }
+
+                    let dateDisplay = 'Tanpa deadline';
+                    let overdueLabel = '';
+                    if (task.deadline) {
+                        dateDisplay = formatDate(task.deadline);
+                        const dlDate = new Date(task.deadline);
+                        dlDate.setHours(0,0,0,0);
+                        if (dlDate < today && !task.completed) {
+                            overdueLabel = `<span class="badge badge-danger">Terlambat!</span>`;
+                        }
+                    }
+
+                    item.innerHTML = `
+                        <div class="task-item-info">
+                            <div class="task-item-title">${escapeHtml(task.title)}</div>
+                            <div class="task-item-meta">
+                                <span class="badge">${escapeHtml(task.category)}</span>
+                                <span>📅 ${dateDisplay} ${overdueLabel}</span>
+                                <span style="color: #ffb300; letter-spacing: 2px;">${starsHtml}</span>
+                            </div>
+                        </div>
+                        <div class="task-item-actions">
+                            <button class="action-btn ${task.completed ? 'btn-uncomplete' : 'btn-complete'}">
+                                ${task.completed ? 'Batal' : 'Selesai'}
+                            </button>
+                            <button class="action-btn btn-delete">Hapus</button>
+                        </div>
+                    `;
+                    taskContainer.appendChild(item);
+                });
+            }
+        }
+
+        taskContainer.addEventListener('click', (e) => {
+            const item = e.target.closest('.task-item');
+            if (!item) return;
+            const id = item.dataset.id;
+
+            if (e.target.classList.contains('btn-complete') || e.target.classList.contains('btn-uncomplete')) {
+                tasks = tasks.map(task => {
+                    if (task.id === id) task.completed = !task.completed;
+                    return task;
+                });
+                saveAndRender();
+            } else if (e.target.classList.contains('btn-delete')) {
+                tasks = tasks.filter(task => task.id !== id);
+                saveAndRender();
+            }
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.getAttribute('data-filter');
+                renderTasks();
+            });
+        });
+
+        updateStatistics();
+        renderTasks();
+    </script>
+
+</body>
+</html>
 
