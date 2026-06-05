@@ -11,6 +11,7 @@
 </head>
 <body>
 
+    <!-- NAVIGASI BAR -->
     <nav class="navbar">
         <a href="index.html" class="navbar-brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 120" style="height: 40px; width: auto; display: block;">
@@ -48,22 +49,29 @@
         </ul>
     </nav>
 
-    <div class="container">
-        <header class="hero-section">
-            <h1 class="page-title" style="font-size: 3.5rem; margin-bottom: 1rem;">Selamat Datang di Abbilefa Project</h1>
-            <p style="font-size: 1.2rem; color: #ffffff; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; opacity: 0.9;">Membangun solusi digital inovatif dengan desain modern untuk masa depan yang lebih efisien.</p>
-            <a href="project.html" class="btn">Jelajahi Project</a>
-        </header>
+    <!-- HERO SECTION (FOTO TIM BACKGROUND FULL SCREEN) -->
+    <!-- Ditaruh di luar container agar gambarnya melebar penuh dari ujung ke ujung layar -->
+    <header class="hero-section">
+        <h1 class="page-title" style="font-size: 3.5rem; margin-bottom: 1rem; font-weight: 800;">Selamat Datang di Abbilefa Project</h1>
+        <p style="font-size: 1.2rem; color: #ffffff; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; opacity: 0.95; line-height: 1.8;">
+            Membangun solusi digital inovatif dengan desain modern untuk masa depan yang lebih efisien.
+        </p>
+        <a href="project.html" class="btn">Jelajahi Project</a>
+    </header>
 
-        <section style="text-align: center; margin-bottom: 40px; margin-top: 40px;">
-            <h2 style="color: var(--accent-color);">Inovasi dalam Mengelompokkan Tugas</h2>
+    <!-- KONTEN BAWAH WEBSITE -->
+    <div class="container">
+        <section style="text-align: center; margin-bottom: 40px; margin-top: 60px;">
+            <h2 style="color: var(--accent-color); font-size: 2rem; font-weight: 600;">Inovasi dalam Mengelompokkan Tugas</h2>
         </section>
     </div>
 
+    <!-- FOOTER -->
     <footer class="footer">
         &copy; 2026 Abbilefa Project. Otw dipatenkan.
     </footer>
 
+    <!-- SCRIPT INTERAKTIF NAVBAR -->
     <script>
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navbarMenu = document.getElementById('navbar-menu');
