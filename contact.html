@@ -12,7 +12,27 @@
 <body>
 
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">Abbilefa Project</a>
+        <a href="index.html" class="navbar-brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 120" style="height: 40px; width: auto; display: block;">
+                <defs>
+                    <linearGradient id="cyberCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00bcd4" />
+                        <stop offset="100%" stop-color="#0097a7" />
+                    </linearGradient>
+                </defs>
+                <g transform="translate(10, 10)">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#cyberCyan)" stroke-width="3" stroke-dasharray="12 6" opacity="0.4"/>
+                    <path d="M50 15 L80 80 L63 80 L50 50 L37 80 L20 80 Z" fill="url(#cyberCyan)" />
+                    <circle cx="50" cy="15" r="4.5" fill="#ffffff" />
+                </g>
+                <text x="130" y="65" font-family="'Poppins', sans-serif" font-size="48" font-weight="700" fill="#ffffff" letter-spacing="1">
+                    abbi<tspan fill="#00bcd4">lefa</tspan>
+                </text>
+                <text x="132" y="92" font-family="'Poppins', sans-serif" font-size="14" font-weight="600" fill="#a0a0a0" letter-spacing="6">
+                    PROJECT
+                </text>
+            </svg>
+        </a>
         
         <button class="hamburger" id="hamburger-btn">
             <span></span>
@@ -28,8 +48,7 @@
         </ul>
     </nav>
 
-    <div class="container">
-        <header class="page-header">
+    <div class="container" style="margin-top: 120px;"> <header class="page-header">
             <h1 class="page-title">Hubungi Tim Kami</h1>
             <p class="page-subtitle">Hubungi langsung anggota tim kami melalui WhatsApp untuk berkolaborasi.</p>
         </header>
@@ -97,4 +116,3 @@
     </script>
 </body>
 </html>
-
