@@ -41,11 +41,20 @@ body {
   z-index: 1000;
 }
 
+/* Penyesuaian Logo SVG Brand agar tidak gepeng & sejajar */
 .navbar-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
+  padding: 0;
+}
+
+.navbar-brand svg {
+  height: 40px;
+  width: auto;
+  display: block;
+  max-width: 100%;
 }
 
 /* CSS Tombol Hamburger (Hanya muncul di HP) */
@@ -260,7 +269,7 @@ body {
 
 #stat-completed { color: #2ecc71; }   
 #stat-approaching { color: #f1c40f; } 
-#stat-overdue { color: #e74c3c; }     
+#stat-overdue { color: #e74c3c; }      
 
 .ui-divider {
     border-bottom: 2px solid #333;
@@ -451,7 +460,7 @@ body {
 }
 
 /* ==========================================================================
-    MEDIA QUERIES - MENCEGAH LAYOUT BERANTAKAN DI HP & TABLET
+   MEDIA QUERIES - MENCEGAH LAYOUT BERANTAKAN DI HP & TABLET
    ========================================================================== */
 @media (max-width: 768px) {
   .page-title {
@@ -491,6 +500,11 @@ body {
 }
 
 @media (max-width: 576px) {
+  /* Logo mengecil sedikit di HP agar porsi navbar tetap simetris */
+  .navbar-brand svg {
+      height: 32px; 
+  }
+
   .container {
       padding: 0 12px; 
       margin-top: 80px;
@@ -518,4 +532,3 @@ body {
       padding: 0.6rem; 
   }
 }
-
