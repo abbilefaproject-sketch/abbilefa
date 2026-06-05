@@ -98,16 +98,14 @@ body {
   color: var(--accent-color);
 }
 
-/* --- BAGIAN HERO BACKGROUND (MENGGUNAKAN NAMA FILE WHATSAPP ASLI) --- */
 .hero-section {
-  /* Di sini saya masukkan nama file asli WhatsApp Anda agar terbaca oleh GitHub */
-  background-image: linear-gradient(rgba(18, 18, 18, 0.65), rgba(18, 18, 18, 0.65)), url('WhatsApp Image 2026-06-05 at 7.59.53 PM.jpeg');
+  background-image: linear-gradient(rgba(18, 18, 18, 0.65), rgba(18, 18, 18, 0.65)), url('tim-abbilefa.jpeg');
   background-size: cover;
-  background-position: center 30%; 
+  background-position: center 30%;
   background-repeat: no-repeat;
   width: 100%;
-  min-height: 75vh; 
-  padding: 160px 20px 80px; 
+  min-height: 75vh;
+  padding: 160px 20px 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
