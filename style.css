@@ -98,16 +98,16 @@ body {
   color: var(--accent-color);
 }
 
-/* --- BAGIAN HERO BACKGROUND (FOTO TIM BARU) --- */
+/* --- BAGIAN HERO BACKGROUND (MENGGUNAKAN NAMA FILE WHATSAPP ASLI) --- */
 .hero-section {
-  /* Menggabungkan lapisan hitam transparan (overlay 65%) dengan foto tim Anda */
-  background-image: linear-gradient(rgba(18, 18, 18, 0.65), rgba(18, 18, 18, 0.65)), url('tim-abbilefa.jpg');
+  /* Di sini saya masukkan nama file asli WhatsApp Anda agar terbaca oleh GitHub */
+  background-image: linear-gradient(rgba(18, 18, 18, 0.65), rgba(18, 18, 18, 0.65)), url('WhatsApp Image 2026-06-05 at 7.59.53 PM.jpeg');
   background-size: cover;
-  background-position: center 30%; /* Menggeser sedikit ke atas agar fokus pada wajah */
+  background-position: center 30%; 
   background-repeat: no-repeat;
   width: 100%;
-  min-height: 75vh; /* Memastikan elemen memiliki tinggi minimal agar gambar tidak gepeng */
-  padding: 160px 20px 80px; /* Jarak atas 160px agar teks turun dan tidak tertutup navbar fixed */
+  min-height: 75vh; 
+  padding: 160px 20px 80px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -524,7 +524,7 @@ body {
   }
 
   .hero-section {
-      min-height: 70vh; /* Sedikit lebih pendek di HP agar pas */
+      min-height: 70vh; 
       background-position: center 20%;
   }
 
