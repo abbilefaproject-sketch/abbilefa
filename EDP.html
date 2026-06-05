@@ -3,56 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDP - Web Saya</title>
-    <!-- Menghubungkan ke file style.css -->
+    <title>EDP - Proyek A3D1</title>
+    <!-- Import Font Poppins dari Google Fonts sesuai CSS kamu -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Menu Navigasi -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="product.html">Product</a></li>
-                <!-- Class active untuk halaman EDP -->
-                <li><a href="edp.html" class="active">EDP</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- NAVBAR (Sesuai CSS) -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <!-- Logo Sederhana berbasis teks/SVG -->
+            <svg viewBox="0 0 100 40" fill="#00bcd4">
+                <text x="0" y="28" font-family="Poppins" font-size="28" font-weight="bold">A3D1</text>
+            </svg>
+        </a>
+        <button class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="navbar-nav" id="navbarNav">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="product.html" class="nav-link">Product</a></li>
+            <li class="nav-item"><a href="edp.html" class="nav-link active">EDP</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
 
-    <!-- Konten Utama -->
-    <main>
-        <section class="edp-content" style="text-align: center; padding: 20px;">
-            <h1>Proyek A3D1</h1>
-            <p>Berikut adalah detail presentasi proyek kami:</p>
+    <!-- KONTEN UTAMA -->
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">Presentasi EDP</h1>
+            <p class="page-subtitle">Proyek A3D1 oleh Abiyasa Jalu Langit</p>
+        </div>
 
-            <!-- Pembungkus agar presentasi tetap di tengah dan rapi -->
-            <div style="max-width: 800px; margin: 0 auto;">
-                
-                <!-- KODE CANVA KAMU DIMULAI DARI SINI -->
-                <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
-                 padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-                 border-radius: 8px; will-change: transform;">
-                  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-                    src="https://www.canva.com/design/DAHIzCdGVUE/SO6cxo1f7Iu590cHGWWJXw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-                  </iframe>
-                </div>
-                <div style="font-size: 14px; color: #555;">
-                    <a href="https://www.canva.com/design/DAHIzCdGVUE/SO6cxo1f7Iu590cHGWWJXw/view?utm_content=DAHIzCdGVUE&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener" style="text-decoration: none; color: #007bff; font-weight: bold;">A3D1 projek</a> by ABIYASA JALU LANGIT
-                </div>
-                <!-- KODE CANVA KAMU BERAKHIR DI SINI -->
-
+        <div class="ui-card">
+            <!-- EMBED CANVA (Sesuai CSS) -->
+            <div class="canva-embed-container">
+                <iframe class="canva-iframe" loading="lazy" 
+                    src="https://www.canva.com/design/DAHIzCdGVUE/SO6cxo1f7Iu590cHGWWJXw/view?embed" 
+                    allowfullscreen="allowfullscreen" allow="fullscreen">
+                </iframe>
             </div>
-        </section>
-    </main>
+            <a class="canva-link" href="https://www.canva.com/design/DAHIzCdGVUE/SO6cxo1f7Iu590cHGWWJXw/view?utm_content=DAHIzCdGVUE&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">
+                Lihat A3D1 projek di Canva
+            </a>
+        </div>
+    </div>
 
-    <!-- Footer Website -->
-    <footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #ddd;">
+    <!-- FOOTER -->
+    <footer class="footer">
         <p>&copy; 2026 Abiyasa Jalu Langit. All rights reserved.</p>
     </footer>
 
+    <!-- SCRIPT UNTUK MENU HAMBURGER (HP) -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navbarNav = document.getElementById('navbarNav');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navbarNav.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
