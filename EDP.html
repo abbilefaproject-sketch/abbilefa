@@ -3,66 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDP - Proyek A3D1</title>
-    <!-- Import Font Poppins dari Google Fonts sesuai CSS kamu -->
+    <title>Abbilefa Project - EDP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVBAR (Sesuai CSS) -->
+    <!-- NAVBAR (Sama persis dengan milik About Us) -->
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">
-            <!-- Logo Sederhana berbasis teks/SVG -->
-            <svg viewBox="0 0 100 40" fill="#00bcd4">
-                <text x="0" y="28" font-family="Poppins" font-size="28" font-weight="bold">A3D1</text>
+        <a href="index.html" class="navbar-brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 120" style="height: 40px; width: auto; display: block;">
+                <defs>
+                    <linearGradient id="cyberCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00bcd4" />
+                        <stop offset="100%" stop-color="#0097a7" />
+                    </linearGradient>
+                </defs>
+                <g transform="translate(10, 10)">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#cyberCyan)" stroke-width="3" stroke-dasharray="12 6" opacity="0.4"/>
+                    <path d="M50 15 L80 80 L63 80 L50 50 L37 80 L20 80 Z" fill="url(#cyberCyan)" />
+                    <circle cx="50" cy="15" r="4.5" fill="#ffffff" />
+                </g>
+                <text x="130" y="65" font-family="'Poppins', sans-serif" font-size="48" font-weight="700" fill="#ffffff" letter-spacing="1">
+                    abbi<tspan fill="#00bcd4">lefa</tspan>
+                </text>
+                <text x="132" y="92" font-family="'Poppins', sans-serif" font-size="14" font-weight="600" fill="#a0a0a0" letter-spacing="6">
+                    PROJECT
+                </text>
             </svg>
         </a>
-        <button class="hamburger" id="hamburger">
-            <span></span><span></span><span></span>
+        
+        <button class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
-        <ul class="navbar-nav" id="navbarNav">
+
+        <!-- Menu Navigasi (Sekarang kelas active pindah ke EDP) -->
+        <ul class="navbar-nav" id="navbar-menu">
             <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="product.html" class="nav-link">Product</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
             <li class="nav-item"><a href="edp.html" class="nav-link active">EDP</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="project.html" class="nav-link">Project</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
         </ul>
     </nav>
 
-    <!-- KONTEN UTAMA -->
+    <!-- KONTAINER UTAMA -->
     <div class="container">
-        <div class="page-header">
-            <h1 class="page-title">Presentasi EDP</h1>
-            <p class="page-subtitle">Proyek A3D1 oleh Abiyasa Jalu Langit</p>
-        </div>
+        <header class="page-header">
+            <h1 class="page-title">Materi EDP</h1>
+            <p class="page-subtitle">Presentasi Proyek A3D1 melalui Canva</p>
+        </header>
 
         <div class="ui-card">
-            <!-- EMBED CANVA (Sesuai CSS) -->
+            <!-- EMBED CANVA KHUSUS EDP (Menggunakan link proyek A3D1 kamu) -->
             <div class="canva-embed-container">
-                <iframe class="canva-iframe" loading="lazy" 
-                    src="https://www.canva.com/design/DAHIzCdGVUE/SO6cxo1f7Iu590cHGWWJXw/view?embed" 
-                    allowfullscreen="allowfullscreen" allow="fullscreen">
+                <iframe loading="lazy" class="canva-iframe"
+                  src="https://www.canva.com/design/DAHIzCdGVUE/SO6cxo1f7Iu590cHGWWJXw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
                 </iframe>
             </div>
-            <a class="canva-link" href="https://www.canva.com/design/DAHIzCdGVUE/SO6cxo1f7Iu590cHGWWJXw/view?utm_content=DAHIzCdGVUE&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">
-                Lihat A3D1 projek di Canva
-            </a>
+            <a href="https://www.canva.com/design/DAHIzCdGVUE/SO6cxo1f7Iu590cHGWWJXw/view?utm_content=DAHIzCdGVUE&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener" class="canva-link">A3D1 projek by ABIYASA JALU LANGIT</a>
         </div>
     </div>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <p>&copy; 2026 Abiyasa Jalu Langit. All rights reserved.</p>
+        &copy; 2026 Abbilefa Project. Otw dipatenkan.
     </footer>
 
-    <!-- SCRIPT UNTUK MENU HAMBURGER (HP) -->
+    <!-- SCRIPT JAVASCRIPT (Sama rapinya dengan milik About Us) -->
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const navbarNav = document.getElementById('navbarNav');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navbarNav.classList.toggle('active');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!hamburgerBtn.contains(event.target) && !navbarMenu.contains(event.target)) {
+                navbarMenu.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+            }
         });
     </script>
 </body>
