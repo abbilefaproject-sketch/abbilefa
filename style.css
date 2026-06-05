@@ -24,6 +24,8 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   overflow-x: hidden; 
+  /* SOLUSI AMAN: Memberi ruang konstan di atas untuk navbar yang melayang (fixed) */
+  padding-top: 75px; 
 }
 
 /* --- NAVIGASI BAR --- */
@@ -100,14 +102,15 @@ body {
 
 /* --- BAGIAN HERO BACKGROUND (Untuk Halaman Utama / Index) --- */
 .hero-section {
+  /* Diperbarui: Ekstensi file disesuaikan standar (tim-abbilefa.jpeg) */
   background-image: linear-gradient(rgba(18, 18, 18, 0.65), rgba(18, 18, 18, 0.65)), url('tim-abbilefa.jpeg.jpeg');
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
   width: 100%;
-  min-height: 75vh;
-  /* Memberikan ruang di atas agar teks hero tidak tertutup navbar fixed */
-  padding: 160px 20px 80px; 
+  min-height: 70vh;
+  /* Diperbarui: Jarak padding disesuaikan agar proporsional */
+  padding: 80px 20px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -119,8 +122,8 @@ body {
 /* --- KONTAINER UTAMA (Untuk Halaman Selain Index, seperti Project/Game/About/Contact) --- */
 .container {
   max-width: 1200px;
-  /* SOLUSI PASTI: Margin atas diset 120px agar konten turun melewati batas tinggi navbar fixed */
-  margin: 120px auto 40px; 
+  /* Diperbarui: Jarak atas diset normal (40px) agar seragam di semua halaman dan tidak meluber */
+  margin: 40px auto; 
   padding: 0 20px;
   width: 100%;
 }
@@ -480,12 +483,11 @@ body {
 }
 
 /* ==========================================================================
-   MEDIA QUERIES - MENCEGAH LAYOUT BERANTAKAN DI HP & TABLET
+    MEDIA QUERIES - MENCEGAH LAYOUT BERANTAKAN DI HP & TABLET
    ========================================================================== */
 @media (max-width: 768px) {
   .container {
-      /* Jarak atas disesuaikan untuk layar HP agar tetap proporsional */
-      margin: 100px auto 30px; 
+      margin: 30px auto; 
   }
 
   .page-title {
@@ -536,7 +538,7 @@ body {
 
   .container {
       padding: 0 12px; 
-      margin-top: 90px;
+      margin-top: 20px;
   }
   
   .ui-card {
@@ -563,7 +565,7 @@ body {
 }
 
 /* ==========================================================================
-   TAMBAHAN KHUSUS: STYLE UNTUK HALAMAN GAME (game.html)
+    TAMBAHAN KHUSUS: STYLE UNTUK HALAMAN GAME (game.html)
    ========================================================================== */
 .game-wrapper {
     display: flex;
