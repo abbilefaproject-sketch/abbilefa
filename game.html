@@ -3,33 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapel Dodge — Game Proyek Abbilefa</title>
-    <link rel="stylesheet" href="style.css"> 
-</head>
-<body style="background-color: #080e30; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0;">
+    <title>Abbilefa Project - Mapel Dodge Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Gaya Khusus untuk Area Game */
+        .game-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-    <div class="container" style="text-align: center; padding: 20px;">
-        <header style="margin-bottom: 30px;">
-            <h1 style="color: #608cff; margin-bottom: 5px;">Mapel Dodge</h1>
-            <p style="color: #a0b0d0; margin: 0;">Proyek Game Python (Pygame) oleh Tim Abbilefa</p>
-            <p style="color: #ffc832; font-size: 13px; margin-top: 5px;">🎮 Gunakan tombol A/D atau Arah Panah di Keyboard untuk bergerak</p>
+        .game-info-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 188, 212, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .game-info-box p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        #gameCanvas {
+            background-color: #121212;
+            border: 3px solid #00bcd4;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+            max-width: 100%;
+            display: block;
+            cursor: none; /* Menyembunyikan kursor asli di dalam game */
+        }
+
+        .game-controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn-game {
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,188,212,0.2);
+            transition: all 0.2s;
+        }
+
+        .btn-game:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,188,212,0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 120" style="height: 40px; width: auto; display: block;">
+                <defs>
+                    <linearGradient id="cyberCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00bcd4" />
+                        <stop offset="100%" stop-color="#0097a7" />
+                    </linearGradient>
+                </defs>
+                <g transform="translate(10, 10)">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#cyberCyan)" stroke-width="3" stroke-dasharray="12 6" opacity="0.4"/>
+                    <path d="M50 15 L80 80 L63 80 L50 50 L37 80 L20 80 Z" fill="url(#cyberCyan)" />
+                    <circle cx="50" cy="15" r="4.5" fill="#ffffff" />
+                </g>
+                <text x="130" y="65" font-family="'Poppins', sans-serif" font-size="48" font-weight="700" fill="#ffffff" letter-spacing="1">
+                    abbi<tspan fill="#00bcd4">lefa</tspan>
+                </text>
+                <text x="132" y="92" font-family="'Poppins', sans-serif" font-size="14" font-weight="600" fill="#a0a0a0" letter-spacing="6">
+                    PROJECT
+                </text>
+            </svg>
+        </a>
+        
+        <button class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="navbar-nav" id="navbar-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="project.html" class="nav-link active">Project</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">🕹️ Mapel Dodge Game</h1>
+            <p class="page-subtitle">Hindari serangan singkatan mata pelajaran sekolah yang berjatuhan! Bertahanlah selama mungkin.</p>
         </header>
 
-        <div class="game-wrapper" style="display: inline-block; position: relative;">
-            <iframe src="game_mapel/build/web/index.html" 
-                    width="480" 
-                    height="700" 
-                    style="border: 3px solid #1e50b4; border-radius: 16px; background: #080e1e; box-shadow: 0 12px 32px rgba(0,0,0,0.6);" 
-                    allow="autoplay; fullscreen">
-            </iframe>
+        <div class="ui-card game-wrapper">
+            
+            <div class="game-info-box">
+                <p><strong>Cara Bermain:</strong></p>
+                <p>💻 <strong>PC / Laptop:</strong> Gerakkan Mouse ke kanan & kiri untuk mengontrol Kotak Player.</p>
+                <p>📱 <strong>HP / Tablet:</strong> Sentuh dan geser jari Anda di area dalam kotak game.</p>
+            </div>
+
+            <canvas id="gameCanvas" width="480" height="500"></canvas>
+
+            <div class="game-controls">
+                <button id="restartBtn" class="btn-game" style="display: none;">Main Lagi</button>
+            </div>
+
         </div>
 
-        <footer style="margin-top: 30px;">
-            <a href="project.html" style="color: #608cff; text-decoration: none; font-size: 14px; border: 1px solid #1e50b4; padding: 8px 16px; border-radius: 8px; background: rgba(30,80,180,0.1);">
-                ← Kembali ke Halaman Proyek
-            </a>
-        </footer>
     </div>
+
+    <footer class="footer">
+        &copy; 2026 Abbilefa Project. Otw dipatenkan.
+    </footer>
+
+    <script>
+        /* ==============================================
+           1. LOGIKA HAMBURGER MENU (Navigasi)
+           ============================================== */
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navbarMenu = document.getElementById('navbar-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!hamburgerBtn.contains(event.target) && !navbarMenu.contains(event.target)) {
+                navbarMenu.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+            }
+        });
+
+        /* ==============================================
+           2. LOGIKA MESIN GAME (MAPEL DODGE)
+           ============================================== */
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const restartBtn = document.getElementById("restartBtn");
+
+        // Konfigurasi Player
+        const player = {
+            x: canvas.width / 2 - 20,
+            y: canvas.height - 40,
+            width: 40,
+            height: 20,
+            color: "#00bcd4"
+        };
+
+        // Daftar nama/singkatan mapel sebagai rintangan
+        const mapelList = ["MTK", "FISIKA", "KIMIA", "BIOLOGI", "SEJARAH", "EKONOMI", "B.IND", "B.ING", "INFORMATIKA", "PPKN", "AGAMA"];
+        
+        let obstacles = [];
+        let score = 0;
+        let gameOver = false;
+        let spawnTimer = 0;
+        let spawnInterval = 40; // Seberapa cepat rintangan baru muncul
+        let gameSpeed = 3;      // Kecepatan awal jatuhnya mapel
+
+        // Input Mouse untuk PC
+        canvas.addEventListener("mousemove", (e) => {
+            const rect = canvas.getBoundingClientRect();
+            // Menghitung posisi X mouse relatif terhadap canvas
+            const rootX = e.clientX - rect.left;
+            // Memastikan player tidak keluar batas kanan/kiri canvas
+            player.x = rootX - player.width / 2;
+            if (player.x < 0) player.x = 0;
+            if (player.x > canvas.width - player.width) player.x = canvas.width - player.width;
+        });
+
+        // Input Sentuh (Touch) untuk HP / Mobile
+        canvas.addEventListener("touchmove", (e) => {
+            e.preventDefault(); // Mencegah layar ikut ter-scroll saat main
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            const rootX = touch.clientX - rect.left;
+            
+            player.x = rootX - player.width / 2;
+            if (player.x < 0) player.x = 0;
+            if (player.x > canvas.width - player.width) player.x = canvas.width - player.width;
+        }, { passive: false });
+
+        // Fungsi membuat rintangan mapel baru
+        function spawnObstacle() {
+            const text = mapelList[Math.floor(Math.random() * mapelList.length)];
+            ctx.font = "bold 14px 'Poppins', sans-serif";
+            const textWidth = ctx.measureText(text).width;
+
+            obstacles.push({
+                x: Math.random() * (canvas.width - textWidth - 10) + 5,
+                y: -10,
+                text: text,
+                width: textWidth,
+                height: 14,
+                speed: gameSpeed + Math.random() * 2 // Variasi kecepatan tiap teks mapel
+            });
+        }
+
+        // Reset Game
+        function initGame() {
+            obstacles = [];
+            score = 0;
+            gameSpeed = 3;
+            gameOver = false;
+            player.x = canvas.width / 2 - player.width / 2;
+            restartBtn.style.display = "none";
+            loop();
+        }
+
+        // Loop utama jalannya game
+        function loop() {
+            if (gameOver) {
+                // Gambar Layar Game Over
+                ctx.fillStyle = "rgba(0, 0, 0, 0.75)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = "#ff5252";
+                ctx.font = "bold 30px 'Poppins', sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 20);
+
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "16px 'Poppins', sans-serif";
+                ctx.fillText(`Skor Bertahan: ${score}`, canvas.width / 2, canvas.height / 2 + 20);
+                
+                restartBtn.style.display = "inline-block";
+                return;
+            }
+
+            // Bersihkan canvas setiap frame
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Pergerakan & Pembuatan Rintangan
+            spawnTimer++;
+            if (spawnTimer >= spawnInterval) {
+                spawnObstacle();
+                spawnTimer = 0;
+                // Tingkatkan kecepatan perlahan seiring berjalannya waktu
+                if (gameSpeed < 8) gameSpeed += 0.1; 
+            }
+
+            // Gambar Player (Kotak Neon Cyan)
+            ctx.fillStyle = player.color;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = player.color;
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+            ctx.shadowBlur = 0; // Reset efek bayangan agar teks tidak blur
+
+            // Update & Gambar Rintangan Mapel
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "bold 14px 'Poppins', sans-serif";
+            ctx.textAlign = "left";
+
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                let obs = obstacles[i];
+                obs.y += obs.speed;
+
+                // Teks Mapel
+                ctx.fillText(obs.text, obs.x, obs.y);
+
+                // Deteksi Tabrakan (Collision Detection)
+                if (
+                    obs.x < player.x + player.width &&
+                    obs.x + obs.width > player.x &&
+                    obs.y > player.y &&
+                    obs.y - obs.height < player.y + player.height
+                ) {
+                    gameOver = true;
+                }
+
+                // Hapus rintangan yang lolos ke bawah layar dan tambah skor
+                if (obs.y > canvas.height + 20) {
+                    obstacles.splice(i, 1);
+                    score++;
+                }
+            }
+
+            // Tampilkan Skor Real-time di Pojok Kiri Atas
+            ctx.fillStyle = "#00bcd4";
+            ctx.font = "600 16px 'Poppins', sans-serif";
+            ctx.fillText(`Score: ${score}`, 15, 30);
+
+            requestAnimationFrame(loop);
+        }
+
+        // Jalankan game saat tombol restart diklik
+        restartBtn.addEventListener("click", initGame);
+
+        // Jalankan game otomatis pertama kali saat halaman selesai dimuat
+        initGame();
+    </script>
 
 </body>
 </html>
