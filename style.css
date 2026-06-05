@@ -100,18 +100,20 @@ body {
 
 /* --- BAGIAN HERO BACKGROUND (FOTO TIM BARU) --- */
 .hero-section {
-  /* Menggabungkan lapisan hitam transparan (overlay 70%) dengan foto tim Anda */
-  background-image: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('tim-abbilefa.jpg');
+  /* Menggabungkan lapisan hitam transparan (overlay 65%) dengan foto tim Anda */
+  background-image: linear-gradient(rgba(18, 18, 18, 0.65), rgba(18, 18, 18, 0.65)), url('tim-abbilefa.jpg');
   background-size: cover;
-  background-position: center 25%; /* Menggeser sedikit ke atas agar wajah tidak tertutup navbar */
+  background-position: center 30%; /* Menggeser sedikit ke atas agar fokus pada wajah */
   background-repeat: no-repeat;
-  min-height: 85vh; /* Membuat tinggi background memenuhi layar */
+  width: 100%;
+  min-height: 75vh; /* Memastikan elemen memiliki tinggi minimal agar gambar tidak gepeng */
+  padding: 160px 20px 80px; /* Jarak atas 160px agar teks turun dan tidak tertutup navbar fixed */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 /* --- KONTAINER UTAMA --- */
