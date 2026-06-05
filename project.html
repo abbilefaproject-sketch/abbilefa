@@ -9,56 +9,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
-      .game-wrapper {
+    <style>
+        .game-wrapper {
             background: #121212;
-            padding: 15px;
+            padding: 20px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             border: 1px solid #00bcd4;
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 25px;
         }
         .itch-embed {
             width: 100%;
-            max-width: 480px; /* Sesuai ukuran game Anda */
+            max-width: 480px;
             aspect-ratio: 480 / 700;
             border-radius: 8px;
             overflow: hidden;
             background: #000;
+            border: none;
         }
+    </style>
 </head>
 <body>
 
     <nav class="navbar">
         <a href="index.html" class="navbar-brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 120" style="height: 40px; width: auto; display: block;">
-                <defs>
-                    <linearGradient id="cyberCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#00bcd4" />
-                        <stop offset="100%" stop-color="#0097a7" />
-                    </linearGradient>
-                </defs>
+                <defs><linearGradient id="cyberCyan" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00bcd4" /><stop offset="100%" stop-color="#0097a7" /></linearGradient></defs>
                 <g transform="translate(10, 10)">
                     <circle cx="50" cy="50" r="45" fill="none" stroke="url(#cyberCyan)" stroke-width="3" stroke-dasharray="12 6" opacity="0.4"/>
                     <path d="M50 15 L80 80 L63 80 L50 50 L37 80 L20 80 Z" fill="url(#cyberCyan)" />
                     <circle cx="50" cy="15" r="4.5" fill="#ffffff" />
                 </g>
-                <text x="130" y="65" font-family="'Poppins', sans-serif" font-size="48" font-weight="700" fill="#ffffff" letter-spacing="1">
-                    abbi<tspan fill="#00bcd4">lefa</tspan>
-                </text>
-                <text x="132" y="92" font-family="'Poppins', sans-serif" font-size="14" font-weight="600" fill="#a0a0a0" letter-spacing="6">
-                    PROJECT
-                </text>
+                <text x="130" y="65" font-family="'Poppins', sans-serif" font-size="48" font-weight="700" fill="#ffffff" letter-spacing="1">abbi<tspan fill="#00bcd4">lefa</tspan></text>
+                <text x="132" y="92" font-family="'Poppins', sans-serif" font-size="14" font-weight="600" fill="#a0a0a0" letter-spacing="6">PROJECT</text>
             </svg>
         </a>
-        
-        <button class="hamburger" id="hamburger-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
+        <button class="hamburger" id="hamburger-btn"><span></span><span></span><span></span></button>
         <ul class="navbar-nav" id="navbar-menu">
             <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
@@ -69,46 +58,28 @@
     </nav>
 
     <div class="container">
-        
         <header class="page-header">
             <h1 class="page-title">Sistem Manajemen Project & Tugas</h1>
-            <p class="page-subtitle">Pantau alur pengerjaan tugas sekolah dan proyek belajar Anda di sini.</p>
         </header>
 
-        <div style="text-align: center; margin-bottom: 25px;">
-            <a href="game.html" style="text-decoration: none; display: inline-block; padding: 12px 30px; background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%); color: #ffffff; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.95rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,188,212,0.3); transition: transform 0.2s;">
-                🕹️ MAINKAN GAME MAPEL DODGE
-            </a>
+        <div class="game-wrapper">
+            <h2 style="color: #fff; margin-bottom: 15px; font-family: 'Poppins';">🕹️ Mapel Dodge</h2>
+            <iframe class="itch-embed" src="https://itch.io/embed-upload/4647481?color=333333" allowfullscreen></iframe>
         </div>
+
         <div class="ui-card">
-            
             <div class="task-stats">
-                <div class="ui-card stat-card">
-                    <div class="stat-label">Total Tugas</div>
-                    <div class="stat-value" id="stat-total">0</div>
-                </div>
-                <div class="ui-card stat-card">
-                    <div class="stat-label">Selesai</div>
-                    <div class="stat-value" id="stat-completed">0</div>
-                </div>
-                <div class="ui-card stat-card">
-                    <div class="stat-label">Mendekati Deadline</div>
-                    <div class="stat-value" id="stat-approaching">0</div>
-                </div>
-                <div class="ui-card stat-card">
-                    <div class="stat-label">Lewat Deadline</div>
-                    <div class="stat-value" id="stat-overdue">0</div>
-                </div>
+                <div class="ui-card stat-card"><div class="stat-label">Total Tugas</div><div class="stat-value" id="stat-total">0</div></div>
+                <div class="ui-card stat-card"><div class="stat-label">Selesai</div><div class="stat-value" id="stat-completed">0</div></div>
+                <div class="ui-card stat-card"><div class="stat-label">Mendekati Deadline</div><div class="stat-value" id="stat-approaching">0</div></div>
+                <div class="ui-card stat-card"><div class="stat-label">Lewat Deadline</div><div class="stat-value" id="stat-overdue">0</div></div>
             </div>
-
             <div class="ui-divider"></div>
-
             <div class="task-input-section">
                 <input type="text" id="task-title" class="task-input" placeholder="Judul tugas / project...">
                 <input type="date" id="task-deadline" class="task-input" style="color-scheme: dark;">
-                
                 <select id="task-category" class="task-input category-select">
-                    <option value="Matematika" selected>Matematika</option>
+                     <option value="Matematika" selected>Matematika</option>
                     <option value="Fisika">Fisika</option>
                     <option value="Kimia">Kimia</option>
                     <option value="Biologi">Biologi</option>
@@ -125,44 +96,12 @@
                     <option value="Olahraga">Olahraga</option>
                 </select>
             </div>
-
-            <div class="difficulty-section">
-                Tingkat kesulitan:
-                <span class="difficulty-stars">
-                    <span class="star" data-value="1">&#9734;</span>
-                    <span class="star" data-value="2">&#9734;</span>
-                    <span class="star" data-value="3">&#9734;</span>
-                    <span class="star" data-value="4">&#9734;</span>
-                    <span class="star" data-value="5">&#9734;</span>
-                </span>
-                <span id="rating-text" style="font-size: 0.9rem; margin-left: 10px; color: var(--text-muted);">Pilih bintang</span>
-            </div>
-
             <button id="add-task-btn" class="btn" style="width: 100%; text-align: center; color: var(--text-color);">+ Tambah Tugas</button>
-            <div style="height: 1.5rem;"></div>
-
-            <div class="task-filters">
-                <button class="filter-btn active" data-filter="all">Semua</button>
-                <button class="filter-btn" data-filter="active">Belum selesai</button>
-                <button class="filter-btn" data-filter="completed">Selesai</button>
-                <button class="filter-btn" data-filter="overdue">Terlambat</button>
-                <button class="filter-btn" data-filter="priority">Prioritas (***+)</button>
-            </div>
-
-            <div id="task-list-empty" class="task-list-empty">
-                <div class="empty-icon">&#128198;</div>
-                <div>Tidak ada alur tugas saat ini</div>
-            </div>
-
             <div id="task-container" class="task-container"></div>
-
         </div>
-
     </div>
 
-    <footer class="footer">
-        &copy; 2026 Abbilefa Project. Otw dipatenkan.
-    </footer>
+    <footer class="footer">&copy; 2026 Abbilefa Project. Otw dipatenkan.</footer>
 
     <script>
         /* ==============================================
@@ -402,6 +341,5 @@
         updateStatistics();
         renderTasks();
     </script>
-
 </body>
 </html>
