@@ -98,16 +98,16 @@ body {
   color: var(--accent-color);
 }
 
-/* --- BAGIAN HERO BACKGROUND (FIXED NAME & EXTENSION) --- */
+/* --- BAGIAN HERO BACKGROUND (Untuk Halaman Utama / Index) --- */
 .hero-section {
-  /* Menggunakan nama file WhatsApp asli yang Anda upload di repositori GitHub */
-  background-image: linear-gradient(rgba(18, 18, 18, 0.65), rgba(18, 18, 18, 0.65)), url('tim-abbilefa.jpeg.jpeg');
+  background-image: linear-gradient(rgba(18, 18, 18, 0.65), rgba(18, 18, 18, 0.65)), url('WhatsApp Image 2026-06-05 at 7.59.53 PM.jpeg');
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
   width: 100%;
   min-height: 75vh;
-  padding: 160px 20px 80px;
+  /* Memberikan ruang di atas agar teks hero tidak tertutup navbar fixed */
+  padding: 160px 20px 80px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -116,10 +116,10 @@ body {
   box-sizing: border-box;
 }
 
-/* --- KONTAINER UTAMA --- */
+/* --- KONTAINER UTAMA (Untuk Halaman Selain Index, seperti Project/Game/About/Contact) --- */
 .container {
   max-width: 1200px;
-  /* Jarak atas diubah menjadi 120px agar konten turun dan tidak terselip di bawah navbar fixed */
+  /* SOLUSI PASTI: Margin atas diset 120px agar konten turun melewati batas tinggi navbar fixed */
   margin: 120px auto 40px; 
   padding: 0 20px;
   width: 100%;
@@ -483,6 +483,11 @@ body {
    MEDIA QUERIES - MENCEGAH LAYOUT BERANTAKAN DI HP & TABLET
    ========================================================================== */
 @media (max-width: 768px) {
+  .container {
+      /* Jarak atas disesuaikan untuk layar HP agar tetap proporsional */
+      margin: 100px auto 30px; 
+  }
+
   .page-title {
     font-size: 2rem; 
   }
@@ -531,7 +536,7 @@ body {
 
   .container {
       padding: 0 12px; 
-      margin-top: 40px;
+      margin-top: 90px;
   }
   
   .ui-card {
@@ -593,7 +598,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
     max-width: 100%;
     display: block;
-    cursor: none; /* Menyembunyikan kursor asli saat berada di dalam area game */
+    cursor: none;
 }
 
 .game-controls {
