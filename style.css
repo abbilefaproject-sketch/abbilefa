@@ -119,7 +119,8 @@ body {
 /* --- KONTAINER UTAMA --- */
 .container {
   max-width: 1200px;
-  margin: 40px auto; 
+  /* Jarak atas diubah menjadi 120px agar konten turun dan tidak terselip di bawah navbar fixed */
+  margin: 120px auto 40px; 
   padding: 0 20px;
   width: 100%;
 }
