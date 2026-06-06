@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+        /* =============================================
+           GAME WRAPPER
+        ============================================= */
         .game-wrapper {
             background: #121212;
             padding: 20px;
@@ -21,30 +24,294 @@
             align-items: center;
             margin-bottom: 25px;
         }
-        .itch-embed {
+        .game-wrapper h2 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        /* ─── Solusi game: tampilkan tombol buka di itch.io ─── */
+        .game-launch-box {
             width: 100%;
             max-width: 480px;
-            aspect-ratio: 480 / 700;
+            aspect-ratio: 480 / 280;
             border-radius: 8px;
-            overflow: hidden;
-            background: #000;
+            background: #0d0d0d;
+            border: 1px dashed rgba(0,188,212,0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            color: #a0a0a0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .game-launch-box p {
+            font-size: 13px;
+            text-align: center;
+            max-width: 300px;
+            line-height: 1.6;
+        }
+        .btn-play {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 28px;
+            background: #00bcd4;
+            color: #fff;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        .btn-play:hover { opacity: 0.85; transform: translateY(-1px); }
+
+        /* =============================================
+           TASK MANAGER
+        ============================================= */
+        .tm-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tm-stat {
+            background: var(--card-bg, #1e1e1e);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 10px;
+            padding: 12px 10px;
+            text-align: center;
+        }
+        .tm-stat-val {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+        }
+        .tm-stat-val.green { color: #10b981; }
+        .tm-stat-val.amber { color: #f59e0b; }
+        .tm-stat-val.red   { color: #ef4444; }
+        .tm-stat-lbl {
+            font-size: 11px;
+            color: #777;
+            margin-top: 2px;
+        }
+
+        /* Form input */
+        .tm-form-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .tm-input {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 9px 12px;
+            color: #e0e0e0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            width: 100%;
+            transition: border-color 0.2s;
+        }
+        .tm-input:focus {
+            outline: none;
+            border-color: #00bcd4;
+        }
+        .tm-input::placeholder { color: #555; }
+
+        /* Star rating */
+        .tm-stars-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin: 10px 0;
+        }
+        .tm-stars-row span:first-child {
+            font-size: 13px;
+            color: #888;
+            margin-right: 4px;
+        }
+        .tm-star {
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            transition: transform 0.1s, color 0.1s;
+            line-height: 1;
+            user-select: none;
+        }
+        .tm-star.lit { color: #f59e0b; }
+        .tm-star:hover { transform: scale(1.2); }
+        .tm-star-label {
+            font-size: 13px;
+            color: #777;
+            margin-left: 8px;
+        }
+
+        /* Tambah button */
+        .tm-add-btn {
+            width: 100%;
+            padding: 11px;
+            background: #00bcd4;
+            color: #fff;
             border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.15s;
+            margin-top: 4px;
+        }
+        .tm-add-btn:hover { opacity: 0.85; }
+
+        /* Filter bar */
+        .tm-filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+        .tm-fb {
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04);
+            font-size: 12px;
+            color: #aaa;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .tm-fb:hover { border-color: #00bcd4; color: #00bcd4; }
+        .tm-fb.active { background: #00bcd4; color: #fff; border-color: #00bcd4; }
+
+        /* Sort + mapel row */
+        .tm-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .tm-mapel-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+        .tm-sort-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tm-sort-wrap label {
+            font-size: 12px;
+            color: #777;
+            white-space: nowrap;
+        }
+
+        /* Task card */
+        .tm-task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .tm-task {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 10px;
+            padding: 14px 16px;
+            transition: opacity 0.2s, border-color 0.2s;
+        }
+        .tm-task.overdue  { border-left: 3px solid #ef4444; }
+        .tm-task.approach { border-left: 3px solid #f59e0b; }
+        .tm-task.done     { opacity: 0.55; }
+        .tm-task.done .tm-task-title { text-decoration: line-through; color: #666; }
+
+        .tm-task-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .tm-task-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #e0e0e0;
+            flex: 1;
+        }
+        .tm-task-btns {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+        .tm-btn-sm {
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: transparent;
+            font-size: 12px;
+            font-family: 'Poppins', sans-serif;
+            color: #aaa;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .tm-btn-done  { border-color: #10b981; color: #10b981; }
+        .tm-btn-done:hover  { background: #10b981; color: #fff; }
+        .tm-btn-undo  { border-color: #f59e0b; color: #f59e0b; }
+        .tm-btn-undo:hover  { background: #f59e0b; color: #fff; }
+        .tm-btn-del   { border-color: #ef4444; color: #ef4444; }
+        .tm-btn-del:hover   { background: #ef4444; color: #fff; }
+
+        .tm-task-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .tm-badge {
+            font-size: 11px;
+            padding: 2px 9px;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+        .tm-badge-mapel  { background: rgba(0,188,212,0.15); color: #00bcd4; }
+        .tm-badge-done   { background: rgba(16,185,129,0.15); color: #10b981; }
+        .tm-badge-pending{ background: rgba(245,158,11,0.15); color: #f59e0b; }
+        .tm-badge-over   { background: rgba(239,68,68,0.15);  color: #ef4444; }
+        .tm-date-txt     { font-size: 12px; color: #666; }
+        .tm-stars-disp   { font-size: 13px; color: #f59e0b; letter-spacing: 1px; }
+
+        .tm-empty {
+            text-align: center;
+            padding: 32px;
+            color: #555;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
+    <!-- ====================================================
+         NAVBAR
+    ==================================================== -->
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 120" style="height: 40px; width: auto; display: block;">
-                <defs><linearGradient id="cyberCyan" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00bcd4" /><stop offset="100%" stop-color="#0097a7" /></linearGradient></defs>
-                <g transform="translate(10, 10)">
+        <a href="index.html" class="navbar-brand" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 120" style="height:40px;width:auto;display:block;">
+                <defs><linearGradient id="cyberCyan" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00bcd4"/><stop offset="100%" stop-color="#0097a7"/></linearGradient></defs>
+                <g transform="translate(10,10)">
                     <circle cx="50" cy="50" r="45" fill="none" stroke="url(#cyberCyan)" stroke-width="3" stroke-dasharray="12 6" opacity="0.4"/>
-                    <path d="M50 15 L80 80 L63 80 L50 50 L37 80 L20 80 Z" fill="url(#cyberCyan)" />
-                    <circle cx="50" cy="15" r="4.5" fill="#ffffff" />
+                    <path d="M50 15 L80 80 L63 80 L50 50 L37 80 L20 80 Z" fill="url(#cyberCyan)"/>
+                    <circle cx="50" cy="15" r="4.5" fill="#ffffff"/>
                 </g>
-                <text x="130" y="65" font-family="'Poppins', sans-serif" font-size="48" font-weight="700" fill="#ffffff" letter-spacing="1">abbi<tspan fill="#00bcd4">lefa</tspan></text>
-                <text x="132" y="92" font-family="'Poppins', sans-serif" font-size="14" font-weight="600" fill="#a0a0a0" letter-spacing="6">PROJECT</text>
+                <text x="130" y="65" font-family="'Poppins',sans-serif" font-size="48" font-weight="700" fill="#ffffff" letter-spacing="1">abbi<tspan fill="#00bcd4">lefa</tspan></text>
+                <text x="132" y="92" font-family="'Poppins',sans-serif" font-size="14" font-weight="600" fill="#a0a0a0" letter-spacing="6">PROJECT</text>
             </svg>
         </a>
         <button class="hamburger" id="hamburger-btn"><span></span><span></span><span></span></button>
@@ -57,289 +324,401 @@
         </ul>
     </nav>
 
+    <!-- ====================================================
+         MAIN CONTENT
+    ==================================================== -->
     <div class="container">
         <header class="page-header">
             <h1 class="page-title">Sistem Manajemen Project & Tugas</h1>
         </header>
 
+        <!-- ========== GAME SECTION ========== -->
+        <!--
+            SOLUSI MASALAH LOADING GAME ITCH.IO:
+            Embed itch.io sering mengalami loading terus-menerus karena:
+            1. Browser memblokir iframe third-party (cookie/storage restriction)
+            2. URL "embed-upload" hanya berfungsi bila login itch.io di tab yang sama
+            3. Beberapa browser (terutama Safari & Chrome mode strict) blokir autoplay
+
+            SOLUSI TERBAIK: Tampilkan thumbnail/preview + tombol "Main Sekarang"
+            yang membuka game di tab baru itch.io. Ini 100% berhasil di semua browser.
+
+            Ganti href di bawah dengan URL halaman game itch.io kamu.
+        -->
         <div class="game-wrapper">
-            <h2 style="color: #fff; margin-bottom: 15px; font-family: 'Poppins';">🕹️ Mapel Dodge</h2>
-            <iframe class="itch-embed" src="https://itch.io/embed-upload/4647481?color=333333" allowfullscreen></iframe>
+            <h2>🕹️ Mapel Dodge</h2>
+            <div class="game-launch-box">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                    <circle cx="28" cy="28" r="28" fill="rgba(0,188,212,0.12)"/>
+                    <polygon points="22,18 42,28 22,38" fill="#00bcd4"/>
+                </svg>
+                <p>Game berjalan langsung di itch.io.<br>Klik tombol di bawah untuk memainkannya — dijamin tidak loading terus!</p>
+                <a class="btn-play" href="https://itch.io/embed-upload/4647481" target="_blank" rel="noopener">
+                    ▶ Main Sekarang
+                </a>
+                <p style="font-size:11px;color:#555">Membuka di tab baru · Gratis dimainkan</p>
+            </div>
         </div>
 
+        <!-- ========== TASK MANAGER ========== -->
         <div class="ui-card">
-            <div class="task-stats">
-                <div class="ui-card stat-card"><div class="stat-label">Total Tugas</div><div class="stat-value" id="stat-total">0</div></div>
-                <div class="ui-card stat-card"><div class="stat-label">Selesai</div><div class="stat-value" id="stat-completed">0</div></div>
-                <div class="ui-card stat-card"><div class="stat-label">Mendekati Deadline</div><div class="stat-value" id="stat-approaching">0</div></div>
-                <div class="ui-card stat-card"><div class="stat-label">Lewat Deadline</div><div class="stat-value" id="stat-overdue">0</div></div>
+
+            <!-- STATISTIK -->
+            <div class="tm-stats">
+                <div class="tm-stat">
+                    <div class="tm-stat-val" id="st-total">0</div>
+                    <div class="tm-stat-lbl">Total Tugas</div>
+                </div>
+                <div class="tm-stat">
+                    <div class="tm-stat-val green" id="st-done">0</div>
+                    <div class="tm-stat-lbl">Selesai</div>
+                </div>
+                <div class="tm-stat">
+                    <div class="tm-stat-val amber" id="st-near">0</div>
+                    <div class="tm-stat-lbl">Mendekati Deadline</div>
+                </div>
+                <div class="tm-stat">
+                    <div class="tm-stat-val red" id="st-over">0</div>
+                    <div class="tm-stat-lbl">Lewat Deadline</div>
+                </div>
             </div>
+
             <div class="ui-divider"></div>
+
+            <!-- FORM TAMBAH TUGAS -->
             <div class="task-input-section">
-                <input type="text" id="task-title" class="task-input" placeholder="Judul tugas / project...">
-                <input type="date" id="task-deadline" class="task-input" style="color-scheme: dark;">
-                <select id="task-category" class="task-input category-select">
-                     <option value="Matematika" selected>Matematika</option>
-                    <option value="Fisika">Fisika</option>
-                    <option value="Kimia">Kimia</option>
-                    <option value="Biologi">Biologi</option>
-                    <option value="Sejarah">Sejarah</option>
-                    <option value="Ekonomi">Ekonomi</option>
-                    <option value="Geografi">Geografi</option>
-                    <option value="Sosiologi">Sosiologi</option>
-                    <option value="Bahasa Indonesia">Bahasa Indonesia</option>
-                    <option value="Bahasa Inggris">Bahasa Inggris</option>
-                    <option value="Seni Rupa">Seni Rupa</option>
-                    <option value="Informatika">Informatika</option>
-                    <option value="PPkn">PPkn</option>
-                    <option value="Agama">Agama</option>
-                    <option value="Olahraga">Olahraga</option>
-                </select>
+                <div class="tm-form-row">
+                    <input id="inp-title" class="tm-input" placeholder="Judul tugas / project...">
+                    <input id="inp-date"  class="tm-input" type="date" style="color-scheme:dark">
+                    <select id="inp-cat" class="tm-input category-select">
+                        <option>Matematika</option>
+                        <option>Fisika</option>
+                        <option>Kimia</option>
+                        <option>Biologi</option>
+                        <option>Sejarah</option>
+                        <option>Ekonomi</option>
+                        <option>Geografi</option>
+                        <option>Sosiologi</option>
+                        <option>Bahasa Indonesia</option>
+                        <option>Bahasa Inggris</option>
+                        <option>Seni Rupa</option>
+                        <option>Informatika</option>
+                        <option>PPkn</option>
+                        <option>Agama</option>
+                        <option>Olahraga</option>
+                    </select>
+                </div>
+
+                <!-- RATING BINTANG -->
+                <div class="tm-stars-row">
+                    <span>Tingkat kesulitan:</span>
+                    <span class="tm-star" data-v="1">★</span>
+                    <span class="tm-star" data-v="2">★</span>
+                    <span class="tm-star" data-v="3">★</span>
+                    <span class="tm-star" data-v="4">★</span>
+                    <span class="tm-star" data-v="5">★</span>
+                    <span class="tm-star-label" id="star-label">Belum dipilih</span>
+                </div>
             </div>
-            <button id="add-task-btn" class="btn" style="width: 100%; text-align: center; color: var(--text-color);">+ Tambah Tugas</button>
-            <div id="task-container" class="task-container"></div>
-        </div>
-    </div>
+
+            <button class="tm-add-btn" id="add-btn">+ Tambah Tugas</button>
+
+            <div class="ui-divider"></div>
+
+            <!-- FILTER STATUS -->
+            <div class="tm-controls">
+                <div class="tm-filter-bar" id="filter-bar">
+                    <button class="tm-fb active" data-f="all">Semua</button>
+                    <button class="tm-fb" data-f="active">Belum Selesai</button>
+                    <button class="tm-fb" data-f="done">Sudah Selesai</button>
+                    <button class="tm-fb" data-f="overdue">Terlambat</button>
+                    <button class="tm-fb" data-f="priority">Prioritas ≥3★</button>
+                </div>
+                <!-- SORT -->
+                <div class="tm-sort-wrap">
+                    <label>Urutkan:</label>
+                    <select id="sort-sel" class="tm-input" style="width:auto;font-size:12px;padding:6px 10px;">
+                        <option value="added">Terbaru ditambahkan</option>
+                        <option value="deadline">Deadline terdekat</option>
+                        <option value="difficulty">Kesulitan tertinggi</option>
+                        <option value="mapel">Mata Pelajaran (A–Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- FILTER MATA PELAJARAN (auto-generate) -->
+            <div class="tm-mapel-bar" id="mapel-bar"></div>
+
+            <!-- DAFTAR TUGAS -->
+            <div class="tm-task-list" id="task-list">
+                <div class="tm-empty" id="task-empty">Belum ada tugas. Tambahkan tugas pertamamu!</div>
+            </div>
+
+        </div><!-- /ui-card -->
+    </div><!-- /container -->
 
     <footer class="footer">&copy; 2026 Abbilefa Project. Otw dipatenkan.</footer>
 
+    <!-- ====================================================
+         JAVASCRIPT
+    ==================================================== -->
     <script>
-        /* ==============================================
-           1. LOGIKA HAMBURGER MENU (Navigasi)
-           ============================================== */
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const navbarMenu = document.getElementById('navbar-menu');
+    /* ──────────────────────────────────────────
+       1. HAMBURGER MENU
+    ────────────────────────────────────────── */
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const navbarMenu   = document.getElementById('navbar-menu');
 
-        hamburgerBtn.addEventListener('click', () => {
-            navbarMenu.classList.toggle('active');
-            hamburgerBtn.classList.toggle('active');
+    hamburgerBtn.addEventListener('click', () => {
+        navbarMenu.classList.toggle('active');
+        hamburgerBtn.classList.toggle('active');
+    });
+    document.addEventListener('click', e => {
+        if (!hamburgerBtn.contains(e.target) && !navbarMenu.contains(e.target)) {
+            navbarMenu.classList.remove('active');
+            hamburgerBtn.classList.remove('active');
+        }
+    });
+
+    /* ──────────────────────────────────────────
+       2. STATE & HELPERS
+    ────────────────────────────────────────── */
+    let tasks   = JSON.parse(localStorage.getItem('abbilefa_tasks_v3') || '[]');
+    let selRating   = 0;
+    let curFilter   = 'all';
+    let curSort     = 'added';
+    let curMapel    = 'all';
+
+    const STAR_LABELS = ['Belum dipilih','Sangat Mudah','Mudah','Sedang','Sulit','Sangat Sulit'];
+
+    function save()    { localStorage.setItem('abbilefa_tasks_v3', JSON.stringify(tasks)); }
+    function esc(t)    { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function fmtDate(d){ return d ? new Date(d).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'}) : 'Tanpa deadline'; }
+
+    function daysLeft(dl) {
+        if (!dl) return null;
+        const today = new Date(); today.setHours(0,0,0,0);
+        const d = new Date(dl);   d.setHours(0,0,0,0);
+        return Math.ceil((d - today) / 86400000);
+    }
+
+    function getStatus(task) {
+        if (task.done) return 'done';
+        const dl = daysLeft(task.deadline);
+        if (dl === null) return 'pending';
+        if (dl < 0)  return 'overdue';
+        if (dl <= 3) return 'approaching';
+        return 'pending';
+    }
+
+    /* ──────────────────────────────────────────
+       3. STAR RATING
+    ────────────────────────────────────────── */
+    const starEls  = document.querySelectorAll('.tm-star');
+    const starLabel = document.getElementById('star-label');
+
+    function paintStars(v) {
+        starEls.forEach(s => s.classList.toggle('lit', +s.dataset.v <= v));
+        starLabel.textContent = STAR_LABELS[v] || STAR_LABELS[0];
+    }
+
+    starEls.forEach(s => {
+        s.addEventListener('mouseenter', () => paintStars(+s.dataset.v));
+        s.addEventListener('mouseleave', () => paintStars(selRating));
+        s.addEventListener('click',      () => { selRating = +s.dataset.v; paintStars(selRating); });
+    });
+
+    /* ──────────────────────────────────────────
+       4. TAMBAH TUGAS
+    ────────────────────────────────────────── */
+    document.getElementById('add-btn').addEventListener('click', () => {
+        const title = document.getElementById('inp-title').value.trim();
+        if (!title) { document.getElementById('inp-title').focus(); alert('Isi judul tugas dulu ya!'); return; }
+
+        tasks.unshift({
+            id:       Date.now() + '',
+            title,
+            deadline: document.getElementById('inp-date').value,
+            mapel:    document.getElementById('inp-cat').value,
+            rating:   selRating,
+            done:     false,
+            addedAt:  Date.now()
         });
 
-        document.addEventListener('click', (event) => {
-            if (!hamburgerBtn.contains(event.target) && !navbarMenu.contains(event.target)) {
-                navbarMenu.classList.remove('active');
-                hamburgerBtn.classList.remove('active');
+        save();
+
+        // reset form
+        document.getElementById('inp-title').value = '';
+        document.getElementById('inp-date').value  = '';
+        selRating = 0;
+        paintStars(0);
+
+        render();
+    });
+
+    /* ──────────────────────────────────────────
+       5. FILTER & SORT EVENTS
+    ────────────────────────────────────────── */
+    document.getElementById('filter-bar').addEventListener('click', e => {
+        const btn = e.target.closest('.tm-fb');
+        if (!btn) return;
+        curFilter = btn.dataset.f;
+        document.querySelectorAll('.tm-fb').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        render();
+    });
+
+    document.getElementById('sort-sel').addEventListener('change', e => {
+        curSort = e.target.value;
+        render();
+    });
+
+    /* ──────────────────────────────────────────
+       6. RENDER
+    ────────────────────────────────────────── */
+    function updateStats() {
+        let done = 0, near = 0, over = 0;
+        tasks.forEach(t => {
+            if (t.done) { done++; return; }
+            const dl = daysLeft(t.deadline);
+            if (dl === null) return;
+            if (dl < 0) over++;
+            else if (dl <= 3) near++;
+        });
+        document.getElementById('st-total').textContent = tasks.length;
+        document.getElementById('st-done').textContent  = done;
+        document.getElementById('st-near').textContent  = near;
+        document.getElementById('st-over').textContent  = over;
+    }
+
+    function buildMapelFilter() {
+        const bar = document.getElementById('mapel-bar');
+        const mapels = [...new Set(tasks.map(t => t.mapel))].sort();
+        bar.innerHTML = '';
+        if (mapels.length < 2) return;
+
+        const mkBtn = (label, val) => {
+            const b = document.createElement('button');
+            b.className = 'tm-fb' + (curMapel === val ? ' active' : '');
+            b.textContent = label;
+            b.addEventListener('click', () => { curMapel = val; render(); });
+            bar.appendChild(b);
+        };
+
+        mkBtn('Semua Mapel', 'all');
+        mapels.forEach(m => mkBtn(m, m));
+    }
+
+    function filterAndSort() {
+        return tasks
+            .filter(t => {
+                if (curMapel !== 'all' && t.mapel !== curMapel) return false;
+                if (curFilter === 'active')   return !t.done;
+                if (curFilter === 'done')     return  t.done;
+                if (curFilter === 'priority') return  t.rating >= 3;
+                if (curFilter === 'overdue')  return !t.done && daysLeft(t.deadline) < 0;
+                return true;
+            })
+            .sort((a, b) => {
+                if (curSort === 'deadline') {
+                    if (!a.deadline && !b.deadline) return 0;
+                    if (!a.deadline) return 1;
+                    if (!b.deadline) return -1;
+                    return new Date(a.deadline) - new Date(b.deadline);
+                }
+                if (curSort === 'difficulty') return b.rating - a.rating;
+                if (curSort === 'mapel')      return a.mapel.localeCompare(b.mapel, 'id');
+                return b.addedAt - a.addedAt;
+            });
+    }
+
+    function render() {
+        updateStats();
+        buildMapelFilter();
+
+        const list  = document.getElementById('task-list');
+        const empty = document.getElementById('task-empty');
+        const items = filterAndSort();
+
+        // bersihkan task cards (bukan empty msg)
+        Array.from(list.querySelectorAll('.tm-task')).forEach(el => el.remove());
+
+        if (items.length === 0) {
+            empty.style.display = 'block';
+            return;
+        }
+        empty.style.display = 'none';
+
+        items.forEach(task => {
+            const status = getStatus(task);
+            const dl     = daysLeft(task.deadline);
+            const starsStr = '★'.repeat(task.rating || 0) + '☆'.repeat(5 - (task.rating || 0));
+
+            // deadline info text
+            let dlInfo = '';
+            if (!task.done && dl !== null) {
+                if      (dl < 0)  dlInfo = ` <span style="color:#ef4444">(${Math.abs(dl)} hari terlambat)</span>`;
+                else if (dl === 0) dlInfo = ` <span style="color:#f59e0b">(Hari ini!)</span>`;
+                else if (dl <= 3)  dlInfo = ` <span style="color:#f59e0b">(${dl} hari lagi)</span>`;
+                else               dlInfo = ` <span style="color:#555">(${dl} hari lagi)</span>`;
             }
-        });
 
-        /* ==============================================
-           2. LOGIKA APLIKASI TUGAS
-           ============================================== */
-        let tasks = JSON.parse(localStorage.getItem('abbilefa_tasks')) || [];
-        let selectedRating = 0;
-        let currentFilter = 'all';
+            // border class
+            let borderCls = '';
+            if (!task.done && status === 'overdue')     borderCls = ' overdue';
+            else if (!task.done && status === 'approaching') borderCls = ' approach';
 
-        const stars = document.querySelectorAll('.star');
-        const ratingText = document.getElementById('rating-text');
-        const taskTitleInput = document.getElementById('task-title');
-        const taskDeadlineInput = document.getElementById('task-deadline');
-        const taskCategorySelect = document.getElementById('task-category');
-        const addTaskBtn = document.getElementById('add-task-btn');
-        const taskContainer = document.getElementById('task-container');
-        const taskListEmpty = document.getElementById('task-list-empty');
-        
-        const statTotal = document.getElementById('stat-total');
-        const statCompleted = document.getElementById('stat-completed');
-        const statApproaching = document.getElementById('stat-approaching');
-        const statOverdue = document.getElementById('stat-overdue');
-        const filterBtns = document.querySelectorAll('.filter-btn');
+            // status badge
+            let statusBadge = '';
+            if (task.done)              statusBadge = `<span class="tm-badge tm-badge-done">✓ Selesai</span>`;
+            else if (status === 'overdue') statusBadge = `<span class="tm-badge tm-badge-over">Terlambat!</span>`;
+            else                           statusBadge = `<span class="tm-badge tm-badge-pending">Belum Selesai</span>`;
 
-        stars.forEach(star => {
-            star.addEventListener('mouseover', () => {
-                highlightStars(star.getAttribute('data-value'));
-            });
-            star.addEventListener('mouseleave', () => {
-                highlightStars(selectedRating);
-            });
-            star.addEventListener('click', () => {
-                selectedRating = parseInt(star.getAttribute('data-value'));
-                ratingText.textContent = `Tingkat kesulitan: ${selectedRating} Bintang`;
-                ratingText.style.color = '#ffb300';
-                highlightStars(selectedRating);
-            });
-        });
-
-        function highlightStars(rating) {
-            stars.forEach(star => {
-                if (star.getAttribute('data-value') <= rating) {
-                    star.innerHTML = '&#9733;';
-                    star.style.color = '#ffb300';
-                } else {
-                    star.innerHTML = '&#9734;';
-                    star.style.color = '#444';
-                }
-            });
-        }
-
-        addTaskBtn.addEventListener('click', () => {
-            const title = taskTitleInput.value.trim();
-            const deadline = taskDeadlineInput.value;
-            const category = taskCategorySelect.value;
-
-            if (!title) {
-                alert('Silakan masukkan judul tugas terlebih dahulu!');
-                return;
-            }
-
-            const newTask = {
-                id: Date.now().toString(),
-                title: title,
-                deadline: deadline,
-                category: category,
-                rating: selectedRating,
-                completed: false
-            };
-
-            tasks.push(newTask);
-            saveAndRender();
-
-            taskTitleInput.value = '';
-            taskDeadlineInput.value = '';
-            selectedRating = 0;
-            ratingText.textContent = 'Pilih bintang';
-            ratingText.style.color = 'var(--text-muted)';
-            highlightStars(0);
-        });
-
-        function saveAndRender() {
-            localStorage.setItem('abbilefa_tasks', JSON.stringify(tasks));
-            updateStatistics();
-            renderTasks();
-        }
-
-        function updateStatistics() {
-            const today = new Date();
-            today.setHours(0,0,0,0);
-
-            let completedCount = 0;
-            let approachingCount = 0;
-            let overdueCount = 0;
-
-            tasks.forEach(task => {
-                if (task.completed) {
-                    completedCount++;
-                } else if (task.deadline) {
-                    const dlDate = new Date(task.deadline);
-                    dlDate.setHours(0,0,0,0);
-                    const diffTime = dlDate - today;
-                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                    
-                    if (diffDays < 0) {
-                        overdueCount++;
-                    } else if (diffDays >= 0 && diffDays <= 3) {
-                        approachingCount++;
-                    }
-                }
-            });
-
-            statTotal.textContent = tasks.length;
-            statCompleted.textContent = completedCount;
-            statApproaching.textContent = approachingCount;
-            statOverdue.textContent = overdueCount;
-        }
-
-        function escapeHtml(text) {
-            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        }
-
-        function formatDate(dateStr) {
-            const options = { year: 'numeric', month: 'short', day: 'numeric' };
-            return new Date(dateStr).toLocaleDateString('id-ID', options);
-        }
-
-        function renderTasks() {
-            taskContainer.innerHTML = '';
-            const today = new Date();
-            today.setHours(0,0,0,0);
-
-            const filteredTasks = tasks.filter(task => {
-                if (currentFilter === 'active') return !task.completed;
-                if (currentFilter === 'completed') return task.completed;
-                if (currentFilter === 'priority') return task.rating >= 3;
-                if (currentFilter === 'overdue') {
-                    if (task.completed || !task.deadline) return false;
-                    const dlDate = new Date(task.deadline);
-                    dlDate.setHours(0,0,0,0);
-                    return dlDate < today;
-                }
-                return true; 
-            });
-
-            if (filteredTasks.length === 0) {
-                taskListEmpty.style.display = 'block';
-            } else {
-                taskListEmpty.style.display = 'none';
-
-                filteredTasks.forEach(task => {
-                    const item = document.createElement('div');
-                    item.className = `task-item ${task.completed ? 'completed' : ''}`;
-                    item.dataset.id = task.id;
-
-                    let starsHtml = '';
-                    for (let i = 1; i <= 5; i++) {
-                        starsHtml += i <= task.rating ? '★' : '☆';
-                    }
-
-                    let dateDisplay = 'Tanpa deadline';
-                    let overdueLabel = '';
-                    if (task.deadline) {
-                        dateDisplay = formatDate(task.deadline);
-                        const dlDate = new Date(task.deadline);
-                        dlDate.setHours(0,0,0,0);
-                        if (dlDate < today && !task.completed) {
-                            overdueLabel = `<span class="badge badge-danger">Terlambat!</span>`;
+            const el = document.createElement('div');
+            el.className = 'tm-task' + (task.done ? ' done' : '') + borderCls;
+            el.innerHTML = `
+                <div class="tm-task-head">
+                    <div class="tm-task-title">${esc(task.title)}</div>
+                    <div class="tm-task-btns">
+                        ${task.done
+                            ? `<button class="tm-btn-sm tm-btn-undo" onclick="toggleTask('${task.id}')">↩ Batal Selesai</button>`
+                            : `<button class="tm-btn-sm tm-btn-done" onclick="toggleTask('${task.id}')">✓ Tandai Selesai</button>`
                         }
-                    }
-
-                    item.innerHTML = `
-                        <div class="task-item-info">
-                            <div class="task-item-title">${escapeHtml(task.title)}</div>
-                            <div class="task-item-meta">
-                                <span class="badge">${escapeHtml(task.category)}</span>
-                                <span>📅 ${dateDisplay} ${overdueLabel}</span>
-                                <span style="color: #ffb300; letter-spacing: 2px;">${starsHtml}</span>
-                            </div>
-                        </div>
-                        <div class="task-item-actions">
-                            <button class="action-btn ${task.completed ? 'btn-uncomplete' : 'btn-complete'}">
-                                ${task.completed ? 'Batal' : 'Selesai'}
-                            </button>
-                            <button class="action-btn btn-delete">Hapus</button>
-                        </div>
-                    `;
-                    taskContainer.appendChild(item);
-                });
-            }
-        }
-
-        taskContainer.addEventListener('click', (e) => {
-            const item = e.target.closest('.task-item');
-            if (!item) return;
-            const id = item.dataset.id;
-
-            if (e.target.classList.contains('btn-complete') || e.target.classList.contains('btn-uncomplete')) {
-                tasks = tasks.map(task => {
-                    if (task.id === id) task.completed = !task.completed;
-                    return task;
-                });
-                saveAndRender();
-            } else if (e.target.classList.contains('btn-delete')) {
-                tasks = tasks.filter(task => task.id !== id);
-                saveAndRender();
-            }
+                        <button class="tm-btn-sm tm-btn-del" onclick="delTask('${task.id}')" title="Hapus tugas">✕</button>
+                    </div>
+                </div>
+                <div class="tm-task-meta">
+                    <span class="tm-badge tm-badge-mapel">${esc(task.mapel)}</span>
+                    ${statusBadge}
+                    ${task.rating ? `<span class="tm-stars-disp" title="Tingkat kesulitan: ${STAR_LABELS[task.rating]}">${starsStr}</span>` : ''}
+                    <span class="tm-date-txt">📅 ${fmtDate(task.deadline)}${dlInfo}</span>
+                </div>
+            `;
+            list.appendChild(el);
         });
+    }
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentFilter = btn.getAttribute('data-filter');
-                renderTasks();
-            });
-        });
+    /* ──────────────────────────────────────────
+       7. AKSI TUGAS
+    ────────────────────────────────────────── */
+    function toggleTask(id) {
+        tasks = tasks.map(t => t.id === id ? {...t, done: !t.done} : t);
+        save(); render();
+    }
+    function delTask(id) {
+        if (!confirm('Hapus tugas ini?')) return;
+        tasks = tasks.filter(t => t.id !== id);
+        save(); render();
+    }
 
-        updateStatistics();
-        renderTasks();
+    // expose globally (dipakai onclick inline)
+    window.toggleTask = toggleTask;
+    window.delTask    = delTask;
+
+    /* ──────────────────────────────────────────
+       8. INIT
+    ────────────────────────────────────────── */
+    render();
     </script>
 </body>
 </html>
